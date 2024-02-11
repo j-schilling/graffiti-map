@@ -57,8 +57,8 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={19}
         />
-        <GraffitiMarker></GraffitiMarker>
-        <Marker
+        <GraffitiMarker>
+          {/* <Marker
           icon={
             new L.Icon({
               iconUrl: MarkerIcon.src,
@@ -71,13 +71,13 @@ export default function Map() {
             })
           }
           position={[52.5019369753163, 13.411516783230129]}
-        >
+        > */}
           <Popup>
             <div className={styles.popup}>
               A pretty CSS3 popup. <br /> Easily customizable.
             </div>
           </Popup>
-        </Marker>
+        </GraffitiMarker>
       </MapContainer>
     </div>
   );
