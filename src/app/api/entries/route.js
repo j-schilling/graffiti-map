@@ -1,5 +1,7 @@
-import { getAllEntries } from "../../../../services/entryServices";
+import { getAllEntries } from "../../services/entryServices";
+import { NextResponse } from "next/server";
 
-export default function handler(req, res) {
-  res.status(200).json(getAllEntries());
+export async function GET(request) {
+  const entries = await getAllEntries();
+  return NextResponse.json({ entries }, { status: 200 });
 }
