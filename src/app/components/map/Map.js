@@ -8,8 +8,11 @@ import MarkerShadow from "/node_modules/leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useState } from "react";
+import GraffitiMarker from "../marker/Marker";
 
-const Map = () => {
+const fetcher = (url) => fetch(url).then((r) => r.json());
+
+export default function Map() {
   const [coord, setCoord] = useState([52.5019369753163, 13.411516783230129]);
 
   console.log("coord:", coord);
@@ -54,7 +57,7 @@ const Map = () => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={19}
         />
-
+        <GraffitiMarker></GraffitiMarker>
         <Marker
           icon={
             new L.Icon({
@@ -78,6 +81,4 @@ const Map = () => {
       </MapContainer>
     </div>
   );
-};
-
-export default Map;
+}
