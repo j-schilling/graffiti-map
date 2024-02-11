@@ -30,8 +30,7 @@ export default function GraffitiMarker() {
       }
       position={entry.coords}
     >
-      <GraffitiPopup />
+      <GraffitiPopup image={entry.images} />
     </Marker>
   ));
-  console.log("data", data);
 }
