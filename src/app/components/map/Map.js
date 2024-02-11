@@ -1,21 +1,17 @@
 "use client";
 
 import styles from "./Map.module.css";
-import L from "leaflet";
 
-import MarkerIcon from "/node_modules/leaflet/dist/images/marker-icon.png";
-import MarkerShadow from "/node_modules/leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { useState } from "react";
-import GraffitiMarker from "../marker/Marker";
+import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Map() {
   const [coord, setCoord] = useState([52.5019369753163, 13.411516783230129]);
 
-  console.log("coord:", coord);
   const SearchLocation = () => {
     return (
       <div className="search-location">
@@ -57,27 +53,7 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={19}
         />
-        <GraffitiMarker>
-          {/* <Marker
-          icon={
-            new L.Icon({
-              iconUrl: MarkerIcon.src,
-              iconRetinaUrl: MarkerIcon.src,
-              iconSize: [25, 41],
-              iconAnchor: [12.5, 41],
-              popupAnchor: [0, -41],
-              shadowUrl: MarkerShadow.src,
-              shadowSize: [41, 41],
-            })
-          }
-          position={[52.5019369753163, 13.411516783230129]}
-        > */}
-          <Popup>
-            <div className={styles.popup}>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </div>
-          </Popup>
-        </GraffitiMarker>
+        <GraffitiMarker />
       </MapContainer>
     </div>
   );
