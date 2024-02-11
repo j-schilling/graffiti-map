@@ -1,0 +1,12 @@
+.mapgray {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  background-color: red;
+}
+
+.popup {
+  color: red;
+  background-color: blue;
+}
+
+/* .leaflet-map-pane > .leaflet-pane:not(.leaflet-marker-pane) */

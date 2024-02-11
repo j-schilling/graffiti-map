@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./Map.module.css";
 import L from "leaflet";
 
 import MarkerIcon from "/node_modules/leaflet/dist/images/marker-icon.png";
@@ -9,7 +10,8 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useState } from "react";
 
 const Map = () => {
-  const [coord, setCoord] = useState([51.505, -0.09]);
+  const [coord, setCoord] = useState([52.5019369753163, 13.411516783230129]);
+
   console.log("coord:", coord);
   const SearchLocation = () => {
     return (
@@ -24,24 +26,19 @@ const Map = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
           setCoord([position.coords.latitude, position.coords.longitude]);
-          console.log(position);
+          console.log("position:", position);
         });
       } else {
         console.log("Geolocation is not supported by this browser.");
       }
     };
-
-    return (
-      <div className="get-my-location">
-        <button onClick={getMyLocation}>Get My Location</button>
-      </div>
-    );
   };
+  GetMyLocation();
 
   return (
     <div>
-      <SearchLocation />
-      <GetMyLocation />
+      {/* <SearchLocation />
+      <GetMyLocation /> */}
       <MapContainer
         style={{
           height: "100vh",
@@ -52,8 +49,10 @@ const Map = () => {
         scrollWheelZoom={false}
       >
         <TileLayer
+          className={styles.mapgray}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          maxZoom={19}
         />
 
         <Marker
@@ -68,10 +67,12 @@ const Map = () => {
               shadowSize: [41, 41],
             })
           }
-          position={coord}
+          position={[52.5019369753163, 13.411516783230129]}
         >
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            <div className={styles.popup}>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </div>
           </Popup>
         </Marker>
       </MapContainer>
