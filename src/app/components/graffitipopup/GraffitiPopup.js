@@ -9,8 +9,8 @@ export default function GraffitiPopup({ image }) {
     <Popup>
       <Image
         src={image}
-        width={200}
-        height={100}
+        width={300}
+        height={150}
         alt="Picture of a graffiti piece"
       />
     </Popup>
