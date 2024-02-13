@@ -9,7 +9,7 @@ export const metadata = {
 const DynamicMap = dynamic(() => import("../components/map/Map"), {
   ssr: false,
 });
-console.log("Map", DynamicMap);
+
 export default function Home() {
   return (
     <main>

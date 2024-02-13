@@ -13,10 +13,10 @@ export default function GraffitiMarker() {
   const { data, error, isLoading } = useSWR("/api/entries", fetcher);
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
   return data.entries.map((entry) => (
     <Marker
-      key={entry.id}
+      key={entry._id}
       icon={
         new L.Icon({
           iconUrl: MarkerIcon.src,
@@ -30,7 +30,7 @@ export default function GraffitiMarker() {
       }
       position={entry.coords}
     >
-      <GraffitiPopup image={entry.images} id={entry.id} />
+      <GraffitiPopup image={entry.images[0]} id={entry._id} />
     </Marker>
   ));
 }
