@@ -6,8 +6,6 @@ import useSWR from "swr";
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function DetailPage({ params }) {
-  console.log("params", params);
-
   const { id } = params;
 
   const { data, error, isLoading } = useSWR(`/api/entries/${id}`, fetcher);
@@ -17,7 +15,7 @@ export default function DetailPage({ params }) {
   return (
     <main>
       <Image
-        src={data.entry.images}
+        src={data.entry.images[0]}
         width={500}
         height={250}
         alt="Picture of a graffiti piece"
