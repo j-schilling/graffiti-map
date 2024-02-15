@@ -3,6 +3,19 @@
 @tailwind utilities;
 @import "@/app/leaflet.css";
 
+/* Swiper */
+.swiper-button-prev {
+  color: white !important;
+}
+
+.swiper-button-next {
+  color: white !important;
+}
+
+.swiper-pagination {
+  color: white !important;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
