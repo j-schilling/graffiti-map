@@ -3,7 +3,7 @@
 import styles from "./Map.module.css";
 
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 
