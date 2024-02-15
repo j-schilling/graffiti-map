@@ -1,0 +1,7 @@
+.popup {
+  background-color: brown;
+}
+
+.leaflet-popup-tip-container {
+  border-radius: 0px;
+}

@@ -1,0 +1,13 @@
+/* Popup */
+
+.leaflet-popup-content-wrapper {
+  border-radius: 3px !important;
+}
+
+.leaflet-popup-content {
+  margin: 3px 24px 3px 3px !important;
+  width: 100px !important;
+}
+
+.leaflet-popup-tip-container {
+}

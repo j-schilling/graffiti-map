@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function GraffitiPopup({ image, id }) {
   return (
-    <Popup>
+    <Popup className={styles["leaflet-popup-tip-container"]}>
       <Link href={id}>
         <Image
           src={image}
