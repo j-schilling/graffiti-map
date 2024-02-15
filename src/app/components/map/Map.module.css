@@ -3,10 +3,3 @@
   filter: grayscale(100%);
   background-color: red;
 }
-
-/* .leaflet-map-pane > .leaflet-pane:not(.leaflet-marker-pane) */
-
-.popup {
-  color: red;
-  background-color: blue;
-}

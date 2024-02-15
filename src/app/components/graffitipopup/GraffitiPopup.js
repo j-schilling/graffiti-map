@@ -2,12 +2,11 @@
 
 import { Popup } from "react-leaflet";
 import Image from "next/image";
-import styles from "./GraffitiPopup.module.css";
 import Link from "next/link";
 
 export default function GraffitiPopup({ image, id }) {
   return (
-    <Popup className={styles["leaflet-popup-tip-container"]}>
+    <Popup>
       <Link href={id}>
         <Image
           src={image}
