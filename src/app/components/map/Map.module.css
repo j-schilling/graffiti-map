@@ -3,3 +3,11 @@
   filter: grayscale(100%);
   background-color: red;
 }
+
+.currentlocationbutton {
+  position: absolute;
+  bottom: 200px;
+  right: 20px;
+  padding: 10px;
+  z-index: 1400;
+}

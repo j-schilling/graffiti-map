@@ -4,11 +4,13 @@ import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import PositionMarkerIcon from "/public/map/position-marker-icon.png";
+import LocationIcon from "/public/map/location-icon.png";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import { useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
+import Image from "next/image";
 
-const fetcher = (url) => fetch(url).then((r) => r.json());
+// const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Map() {
   const [coords, setCoords] = useState([52.5019369753163, 13.411516783230129]);
@@ -52,6 +54,14 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={19}
         />
+        <button className={styles.currentlocationbutton}>
+          <Image
+            src={LocationIcon}
+            width={50}
+            height={50}
+            alt="Icon to center the map to the current location"
+          />
+        </button>
         <GraffitiMarker />
         <Marker
           icon={
