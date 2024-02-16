@@ -38,7 +38,7 @@ export default function Map() {
   return (
     <div>
       {/* <SearchLocation /> */}
-      <GetMyLocation />
+      {/* <GetMyLocation /> */}
       <MapContainer
         style={{
           height: "100vh",
