@@ -1,16 +1,19 @@
 "use client";
 
 import styles from "./Map.module.css";
-
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import MarkerIcon from "/node_modules/leaflet/dist/images/marker-icon.png";
+import MarkerShadow from "/node_modules/leaflet/dist/images/marker-shadow.png";
+import PositionMarkerIcon from "/node_modules/leaflet/dist/images/position-marker-icon.png";
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import { useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function Map() {
-  const [coord, setCoord] = useState([52.5019369753163, 13.411516783230129]);
+  const [coords, setCoords] = useState([52.5019369753163, 13.411516783230129]);
 
   const SearchLocation = () => {
     return (
@@ -21,29 +24,27 @@ export default function Map() {
   };
 
   const GetMyLocation = () => {
-    const getMyLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          setCoord([position.coords.latitude, position.coords.longitude]);
-          console.log("position:", position);
-        });
-      } else {
-        console.log("Geolocation is not supported by this browser.");
-      }
-    };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setCoords([position.coords.latitude, position.coords.longitude]);
+        console.log("position:", position);
+      });
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
   };
-  GetMyLocation();
+  // GetMyLocation();
 
   return (
     <div>
-      {/* <SearchLocation />
-      <GetMyLocation /> */}
+      {/* <SearchLocation /> */}
+      {/* <GetMyLocation /> */}
       <MapContainer
         style={{
           height: "100vh",
           width: "100vw",
         }}
-        center={coord}
+        center={coords}
         zoom={13}
         scrollWheelZoom={false}
       >
@@ -54,6 +55,20 @@ export default function Map() {
           maxZoom={19}
         />
         <GraffitiMarker />
+        <Marker
+          icon={
+            new L.Icon({
+              iconUrl: PositionMarkerIcon.src,
+              iconRetinaUrl: PositionMarkerIcon.src,
+              // iconSize: [25, 41],
+              // iconAnchor: [12.5, 41],
+              // popupAnchor: [0, -41],
+              // shadowUrl: MarkerShadow.src,
+              // shadowSize: [41, 41],
+            })
+          }
+          position={coords}
+        ></Marker>
       </MapContainer>
     </div>
   );
