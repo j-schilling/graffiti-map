@@ -3,9 +3,7 @@
 import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import MarkerIcon from "/node_modules/leaflet/dist/images/marker-icon.png";
-import MarkerShadow from "/node_modules/leaflet/dist/images/marker-shadow.png";
-import PositionMarkerIcon from "/node_modules/leaflet/dist/images/position-marker-icon.png";
+import PositionMarkerIcon from "/public/map/position-marker-icon.png";
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import { useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";

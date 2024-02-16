@@ -1,7 +1,7 @@
 "use client";
 import L from "leaflet";
-import MarkerIcon from "/node_modules/leaflet/dist/images/marker-icon.png";
-import MarkerShadow from "/node_modules/leaflet/dist/images/marker-shadow.png";
+import MarkerIcon from "/public/map/marker-icon.png";
+import MarkerShadow from "/public/map/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { Marker } from "react-leaflet";
 import useSWR from "swr";
