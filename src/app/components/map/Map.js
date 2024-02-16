@@ -10,10 +10,8 @@ import { useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 import Image from "next/image";
 
-// const fetcher = (url) => fetch(url).then((r) => r.json());
-
 export default function Map() {
-  const [coords, setCoords] = useState([52.5019369753163, 13.411516783230129]);
+  const [coords, setCoords] = useState([52.4785193061056, 13.347730739696487]);
 
   const SearchLocation = () => {
     return (
@@ -54,11 +52,14 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={19}
         />
-        <button className={styles.currentlocationbutton}>
+        <button
+          onClick={GetMyLocation}
+          className={styles.currentlocationbutton}
+        >
           <Image
             src={LocationIcon}
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             alt="Icon to center the map to the current location"
           />
         </button>
