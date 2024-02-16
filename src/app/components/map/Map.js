@@ -10,6 +10,9 @@ import { useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 import Image from "next/image";
 
+import MarkerIcon from "/public/map/marker-icon.png";
+import MarkerShadow from "/public/map/marker-shadow.png";
+
 export default function Map() {
   const [coords, setCoords] = useState([52.4785193061056, 13.347730739696487]);
 
@@ -67,10 +70,25 @@ export default function Map() {
         <Marker
           icon={
             new L.Icon({
+              iconUrl: MarkerIcon.src,
+              iconRetinaUrl: MarkerIcon.src,
+              iconSize: [25, 41],
+              iconAnchor: [12.5, 41],
+              popupAnchor: [0, -41],
+              shadowUrl: MarkerShadow.src,
+              shadowSize: [41, 41],
+            })
+          }
+          position={coords}
+        ></Marker>
+        <Marker
+          icon={
+            new L.Icon({
               iconUrl: PositionMarkerIcon.src,
               iconRetinaUrl: PositionMarkerIcon.src,
               // iconSize: [25, 41],
-              // iconAnchor: [12.5, 41],
+              iconAnchor: [12.5, 15],
+
               // popupAnchor: [0, -41],
               // shadowUrl: MarkerShadow.src,
               // shadowSize: [41, 41],
