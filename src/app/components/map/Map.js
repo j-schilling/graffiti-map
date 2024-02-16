@@ -5,35 +5,63 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import PositionMarkerIcon from "/public/map/position-marker-icon.png";
 import LocationIcon from "/public/map/location-icon.png";
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
-import { useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
+import { useEffect, useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 import Image from "next/image";
-
-// const fetcher = (url) => fetch(url).then((r) => r.json());
+import Button from "../button/Button";
 
 export default function Map() {
-  const [coords, setCoords] = useState([52.5019369753163, 13.411516783230129]);
-
-  const SearchLocation = () => {
-    return (
-      <div className="search-location">
-        <input type="text" placeholder="Search Location" />
-      </div>
-    );
-  };
-
-  const GetMyLocation = () => {
+  const [coords, setCoords] = useState([52.4785193061056, 13.347730739696487]);
+  // 52.4785193061056, 13.347730739696487
+  // const SearchLocation = () => {
+  //   return (
+  //     <div className="search-location">
+  //       <input type="text" placeholder="Search Location" />
+  //     </div>
+  //   );
+  // };
+  function FlyToMyLocation() {
+    const map = useMap();
+    console.log("nav", navigator);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setCoords([position.coords.latitude, position.coords.longitude]);
+        const userCoords = [
+          position.coords.latitude,
+          position.coords.longitude,
+        ];
+        setCoords(userCoords); // Update state with user coordinates
         console.log("position:", position);
+        // Now we can use the map reference directly to fly to the user's location
+        map.flyTo(userCoords, map.getZoom());
       });
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
-  };
-  // GetMyLocation();
+    return null;
+  }
+
+  // useEffect(() => {
+  //   flyToMyLocation();
+  // }, []);
+
+  // const GetMyLocation = () => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       setCoords([position.coords.latitude, position.coords.longitude]);
+  //       console.log("position:", position);
+  //       const map = useMapEvents(map.flyTo(coords, map.getZoom));
+  //     });
+  //   } else {
+  //     console.log("Geolocation is not supported by this browser.");
+  //   }
+  // };
 
   return (
     <div>
@@ -54,14 +82,18 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={19}
         />
-        <button className={styles.currentlocationbutton}>
+
+        {/* <Button
+          FlyToMyLocation={FlyToMyLocation}
+          className={styles.currentlocationbutton}
+        >
           <Image
             src={LocationIcon}
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             alt="Icon to center the map to the current location"
           />
-        </button>
+        </Button> */}
         <GraffitiMarker />
         <Marker
           icon={
@@ -69,7 +101,8 @@ export default function Map() {
               iconUrl: PositionMarkerIcon.src,
               iconRetinaUrl: PositionMarkerIcon.src,
               // iconSize: [25, 41],
-              // iconAnchor: [12.5, 41],
+              iconAnchor: [12.5, 15],
+
               // popupAnchor: [0, -41],
               // shadowUrl: MarkerShadow.src,
               // shadowSize: [41, 41],
