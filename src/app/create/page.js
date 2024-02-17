@@ -1,5 +1,7 @@
-import Link from "next/link.js";
-import { useRouter } from "next/router";
+"use client";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Form from "../components/form/Form.js";
 
 export default function CreateEntryPage() {
