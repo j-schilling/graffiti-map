@@ -1,5 +1,5 @@
 "use client";
-
+import { SessionProvider } from "next-auth/react";
 import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -17,7 +17,10 @@ import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 import Image from "next/image";
 import Button from "../button/Button";
 
-export default function Map() {
+export default function Map({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   const [coords, setCoords] = useState([52.4785193061056, 13.347730739696487]);
   // 52.4785193061056, 13.347730739696487
   // const SearchLocation = () => {
@@ -64,26 +67,28 @@ export default function Map() {
   // };
 
   return (
-    <div>
-      {/* <SearchLocation /> */}
-      {/* <GetMyLocation /> */}
-      <MapContainer
-        style={{
-          height: "100vh",
-          width: "100vw",
-        }}
-        center={coords}
-        zoom={13}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          className={styles.mapgray}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          maxZoom={19}
-        />
+    <SessionProvider session={session}>
+      <div>
+        {/* <SearchLocation /> */}
+        {/* <GetMyLocation /> */}
 
-        {/* <Button
+        <MapContainer
+          style={{
+            height: "100vh",
+            width: "100vw",
+          }}
+          center={coords}
+          zoom={13}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            className={styles.mapgray}
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            maxZoom={19}
+          />
+
+          {/* <Button
           FlyToMyLocation={FlyToMyLocation}
           className={styles.currentlocationbutton}
         >
@@ -94,23 +99,24 @@ export default function Map() {
             alt="Icon to center the map to the current location"
           />
         </Button> */}
-        <GraffitiMarker />
-        <Marker
-          icon={
-            new L.Icon({
-              iconUrl: PositionMarkerIcon.src,
-              iconRetinaUrl: PositionMarkerIcon.src,
-              // iconSize: [25, 41],
-              iconAnchor: [12.5, 15],
+          <GraffitiMarker />
+          <Marker
+            icon={
+              new L.Icon({
+                iconUrl: PositionMarkerIcon.src,
+                iconRetinaUrl: PositionMarkerIcon.src,
+                iconSize: [40, 40],
+                iconAnchor: [12.5, 15],
 
-              // popupAnchor: [0, -41],
-              // shadowUrl: MarkerShadow.src,
-              // shadowSize: [41, 41],
-            })
-          }
-          position={coords}
-        ></Marker>
-      </MapContainer>
-    </div>
+                // popupAnchor: [0, -41],
+                // shadowUrl: MarkerShadow.src,
+                // shadowSize: [41, 41],
+              })
+            }
+            position={coords}
+          ></Marker>
+        </MapContainer>
+      </div>
+    </SessionProvider>
   );
 }
