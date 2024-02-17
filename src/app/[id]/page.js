@@ -1,5 +1,6 @@
 "use client";
 
+// import { SessionProvider } from "next-auth/react";
 import useSWR from "swr";
 import ImageSwiper from "../components/imageswiper/ImageSwiper";
 
@@ -11,11 +12,13 @@ export default function DetailPage({ params }) {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   return (
+    // <SessionProvider session={session}>
     <main>
       <ImageSwiper data={data} />
       <section>
         <h4>📍 {data.entry.location}</h4>
       </section>
     </main>
+    // </SessionProvider>
   );
 }
