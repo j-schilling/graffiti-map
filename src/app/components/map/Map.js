@@ -14,7 +14,7 @@ import {
 import { useEffect, useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 import Image from "next/image";
-import Button from "../button/Button";
+import LocationButton from "../locationbutton/LocationButton";
 
 export default function Map() {
   const [coords, setCoords] = useState([52.4785193061056, 13.347730739696487]);
@@ -83,7 +83,7 @@ export default function Map() {
           maxZoom={19}
         />
 
-        {/* <Button
+        {/* <LocationButton
           FlyToMyLocation={FlyToMyLocation}
           className={styles.currentlocationbutton}
         >
@@ -93,7 +93,7 @@ export default function Map() {
             height={40}
             alt="Icon to center the map to the current location"
           />
-        </Button> */}
+        </LocationButton> */}
         <GraffitiMarker />
         <Marker
           icon={

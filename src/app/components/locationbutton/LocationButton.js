@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 
-const Button = ({ FlyToMyLocation }) => {
+const LocationButton = ({ FlyToMyLocation }) => {
   useEffect(() => {
     FlyToMyLocation();
   }, []);
@@ -9,4 +9,4 @@ const Button = ({ FlyToMyLocation }) => {
   return <button onClick={FlyToMyLocation}></button>;
 };
 
-export default Button;
+export default LocationButton;
