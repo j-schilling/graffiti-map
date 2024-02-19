@@ -31,10 +31,14 @@ export default function Map() {
     console.log("nav", navigator);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        const userCoords = [
-          position.coords.latitude,
-          position.coords.longitude,
-        ];
+        // const userCoords = [
+        //   position.coords.latitude,
+        //   position.coords.longitude,
+        // ];
+        const userCoords = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
         setCoords(userCoords); // Update state with user coordinates
         console.log("position:", position);
         // Now we can use the map reference directly to fly to the user's location
