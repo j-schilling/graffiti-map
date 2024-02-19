@@ -7,9 +7,9 @@ import Form from "../components/form/Form.js";
 export default function CreateEntryPage() {
   const router = useRouter();
 
-  async function AddEntry(entryData) {
+  async function AddGraffiti(entryData) {
     console.log("entryData on create", entryData);
-    const response = await fetch("/api/entries", {
+    const response = await fetch("/api/graffitis", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default function CreateEntryPage() {
         Go back
       </Link>
       <h2>Add Graffiti</h2>
-      <Form onSubmit={AddEntry} formName={"add-entry"} />
+      <Form onSubmit={AddGraffiti} formName={"add-entry"} />
     </>
   );
 }
