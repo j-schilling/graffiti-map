@@ -15,9 +15,9 @@ export default function GraffitiMarker() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
   console.log("data", data);
-  return data.entries.map((entry) => (
+  return data.entries.map((graffiti) => (
     <Marker
-      key={entry._id}
+      key={graffiti._id}
       icon={
         new L.Icon({
           iconUrl: MarkerIcon.src,
@@ -29,9 +29,9 @@ export default function GraffitiMarker() {
           shadowSize: [41, 41],
         })
       }
-      position={entry.coords}
+      position={graffiti.coords}
     >
-      <GraffitiPopup image={entry.images[0]} id={entry._id} />
+      <GraffitiPopup image={graffiti.images[0]} id={graffiti._id} />
     </Marker>
   ));
 }

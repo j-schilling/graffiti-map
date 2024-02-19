@@ -5,8 +5,17 @@ export default function Form({ onSubmit, formName, defaultData }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const entryData = Object.fromEntries(formData);
-    onSubmit(entryData);
-    console.log("entryData", entryData);
+
+    // Tags
+    const tagsArray = entryData.tags.split(",");
+    const finalTagsArray = tagsArray.map((tag) =>
+      tag.toLowerCase().replace(/\s/g, "").replace(/-/g, "")
+    );
+
+    const finalObject = { ...entryData, tags: finalTagsArray, score: 0 };
+    console.log("finalObject", finalObject);
+
+    // onSubmit(entryData);
   }
 
   return (
@@ -40,6 +49,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="coords"
         type="text"
         // defaultValue={defaultData?.mapURL}
+        placeholder="e.g.: 52.50894849139298, 13.39731765733085"
         className={styles.input}
       />
       <label htmlFor="location" className={styles.label}>
@@ -51,15 +61,17 @@ export default function Form({ onSubmit, formName, defaultData }) {
         type="text"
         // defaultValue={defaultData?.location}
         className={styles.input}
+        placeholder="e.g.: Kreuzberg, Berlin, Germany"
       />
       <label htmlFor="tags" className={styles.label}>
-        Tags
+        Tags (separate with commas)
       </label>
       <input
         id="tags"
         name="tags"
         type="text"
         // defaultValue={defaultData?.location}
+        placeholder="e.g. wildstyle, throw-up, RIP"
         className={styles.input}
       />
       <button type="submit">

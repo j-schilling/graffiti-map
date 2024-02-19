@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import Entry from "@/db/models/Entry";
+import Entry from "@/db/models/Graffiti";
 import dbConnect from "@/db/connect";
 
 export async function GET(request) {
