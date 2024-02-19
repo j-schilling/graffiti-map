@@ -14,10 +14,11 @@ import {
 import { useEffect, useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 import Image from "next/image";
-import LocationButton from "../locationbutton/LocationButton";
+// import LocationButton from "../locationbutton/LocationButton";
 
 export default function Map() {
   const [coords, setCoords] = useState([52.4785193061056, 13.347730739696487]);
+
   // 52.4785193061056, 13.347730739696487
   // const SearchLocation = () => {
   //   return (
@@ -47,7 +48,7 @@ export default function Map() {
   // }
 
   // useEffect(() => {
-  //   flyToMyLocation();
+  // FlyToMyLocation();
   // }, []);
 
   // const GetMyLocation = () => {
@@ -61,6 +62,54 @@ export default function Map() {
   //     console.log("Geolocation is not supported by this browser.");
   //   }
   // };
+
+  // const LocationButton = () => {
+  // function FlyToMyLocation() {
+  //   const map = useMap();
+  //   console.log("nav", navigator);
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       const userCoords = [
+  //         position.coords.latitude,
+  //         position.coords.longitude,
+  //       ];
+  //       setCoords(userCoords); // Update state with user coordinates
+  //       console.log("position:", position);
+  //       // Now we can use the map reference directly to fly to the user's location
+  //       map.flyTo(userCoords, map.getZoom());
+  //     });
+  //   } else {
+  //     console.log("Geolocation is not supported by this browser.");
+  //   }
+  //   return null;
+  // }
+  // useEffect(() => {
+  // FlyToMyLocation();
+  // }, []);
+
+  //   return <button onClick={FlyToMyLocation}></button>;
+  // };
+  // function FlyToMyLocation() {
+  //   const map = useMap();
+  //   console.log("nav", navigator);
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       const userCoords = [
+  //         position.coords.latitude,
+  //         position.coords.longitude,
+  //       ];
+  //       setCoords(userCoords); // Update state with user coordinates
+  //       console.log("position:", position);
+  //       // Now we can use the map reference directly to fly to the user's location
+  //       map.flyTo(userCoords, map.getZoom());
+  //     });
+  //   } else {
+  //     console.log("Geolocation is not supported by this browser.");
+  //   }
+  //   return null;
+  // }
+
+  // FlyToMyLocation();
 
   return (
     <div>
@@ -84,7 +133,7 @@ export default function Map() {
         />
 
         {/* <LocationButton
-          FlyToMyLocation={FlyToMyLocation}
+          // FlyToMyLocation={FlyToMyLocation}
           className={styles.currentlocationbutton}
         >
           <Image
