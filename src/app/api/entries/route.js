@@ -12,6 +12,7 @@ export async function POST(request, response) {
   try {
     const entryData = request.body;
     console.log("entrydata", entryData);
+    g;
     await Entry.create(entryData);
 
     return NextResponse.json({ entryData }, { status: 201 });
