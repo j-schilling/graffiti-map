@@ -10,7 +10,6 @@ const graffitiSchema = new Schema(
     coords: [{ type: Number, required: true }],
     location: { type: String, required: true },
     creator: { type: Schema.Types.ObjectId, ref: "User" },
-    date: { type: Number, required: true },
     score: { type: Number, required: true },
     tags: [{ type: String, required: false }],
     comments: { type: [Schema.Types.ObjectId], ref: "Comment" },

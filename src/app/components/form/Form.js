@@ -6,16 +6,30 @@ export default function Form({ onSubmit, formName, defaultData }) {
     const formData = new FormData(event.target);
     const entryData = Object.fromEntries(formData);
 
+    // // Image URLs
+    const imagesArray = entryData.images.split(",");
+    const trimmedImagesArray = imagesArray.map((image) => image.trim());
+
+    // Coords
+    const coordsArray = entryData.coords.split(",");
+    const trimmedCoordsArray = coordsArray.map((coord) => coord.trim());
+
     // Tags
     const tagsArray = entryData.tags.split(",");
     const finalTagsArray = tagsArray.map((tag) =>
       tag.toLowerCase().replace(/\s/g, "").replace(/-/g, "")
     );
 
-    const finalObject = { ...entryData, tags: finalTagsArray, score: 0 };
+    const finalObject = {
+      ...entryData,
+      images: trimmedImagesArray,
+      coords: trimmedCoordsArray,
+      tags: finalTagsArray,
+      score: 0,
+    };
     console.log("finalObject", finalObject);
 
-    // onSubmit(entryData);
+    onSubmit(finalObject);
   }
 
   return (
@@ -71,7 +85,7 @@ export default function Form({ onSubmit, formName, defaultData }) {
         name="tags"
         type="text"
         // defaultValue={defaultData?.location}
-        placeholder="e.g. wildstyle, throw-up, RIP"
+        placeholder="e.g. wildstyle, throwup, rip"
         className={styles.input}
       />
       <button type="submit">

@@ -8,7 +8,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function DetailPage({ params }) {
   const { id } = params;
-  const { data, error, isLoading } = useSWR(`/api/entries/${id}`, fetcher);
+  const { data, error, isLoading } = useSWR(`/api/graffitis/${id}`, fetcher);
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>loading...</div>;
   return (
@@ -16,7 +16,7 @@ export default function DetailPage({ params }) {
     <main>
       <ImageSwiper data={data} />
       <section>
-        <h4>📍 {data.entry.location}</h4>
+        <h4>📍 {data.graffiti.location}</h4>
       </section>
     </main>
     // </SessionProvider>

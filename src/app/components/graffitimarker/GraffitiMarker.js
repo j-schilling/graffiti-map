@@ -10,7 +10,7 @@ import GraffitiPopup from "../graffitipopup/GraffitiPopup";
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function GraffitiMarker() {
-  const { data, error, isLoading } = useSWR("/api/entries", fetcher);
+  const { data, error, isLoading } = useSWR("/api/graffitis", fetcher);
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
