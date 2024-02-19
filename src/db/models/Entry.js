@@ -6,7 +6,7 @@ const { Schema } = mongoose;
 const entrySchema = new Schema({
   images: [{ type: String, required: true }],
   coords: [{ type: Number, required: true }],
-  location: { type: String, required: true },
+  location: { type: String, required: false },
   tags: [{ type: String, required: false }],
   comments: { type: [Schema.Types.ObjectId], ref: "Comment" },
 });
