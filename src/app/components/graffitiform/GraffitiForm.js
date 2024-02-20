@@ -1,4 +1,4 @@
-import styles from "./Form.module.css";
+import styles from "./GraffitiForm.module.css";
 
 export default function Form({ onSubmit, formName, defaultData }) {
   function handleSubmit(event) {

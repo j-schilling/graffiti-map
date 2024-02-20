@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Form from "../components/form/Form.js";
+import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 
 export default function CreateEntryPage() {
   const router = useRouter();
@@ -27,7 +27,7 @@ export default function CreateEntryPage() {
         Go back
       </Link>
       <h2>Add Graffiti</h2>
-      <Form onSubmit={AddGraffiti} formName={"add-entry"} />
+      <GraffitiForm onSubmit={AddGraffiti} formName={"add-entry"} />
     </>
   );
 }
