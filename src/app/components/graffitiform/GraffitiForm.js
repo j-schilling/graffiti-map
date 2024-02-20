@@ -24,13 +24,8 @@ export default function GraffitiForm({ onSubmit, formName, defaultData }) {
     const entryData = Object.fromEntries(formData);
 
     // Cloudinary image upload
-    // const form = event.currentTarget;
-    // // const fileInput = Array.from(form.elements).find(
-    // //   ({ name }) => name === "file"
-    // // );
-
     formData.append("upload_preset", "ml_default");
-    console.log("formData", formData);
+
     const data = await fetch(
       "https://api.cloudinary.com/v1_1/ds38ne4yp/image/upload",
       {
@@ -41,7 +36,6 @@ export default function GraffitiForm({ onSubmit, formName, defaultData }) {
 
     setImageSrc(data.secure_url);
     setUploadData(data);
-    console.log("data", data);
 
     // Coords
     const coordsArray = entryData.coords.split(",");
@@ -72,7 +66,10 @@ export default function GraffitiForm({ onSubmit, formName, defaultData }) {
       className={styles.form}
     >
       <p>
-        <input onChange={handleOnChange} type="file" name="file" />
+        <label htmlFor="file" className={styles.label}>
+          Upload graffiti image
+        </label>
+        <input required onChange={handleOnChange} type="file" name="file" />
       </p>
 
       {imageSrc && (
@@ -85,9 +82,10 @@ export default function GraffitiForm({ onSubmit, formName, defaultData }) {
       )}
 
       <label htmlFor="coords" className={styles.label}>
-        Longitude, Lattitude
+        Longitude, Lattitude *
       </label>
       <input
+        required
         id="coords"
         name="coords"
         type="text"
@@ -96,9 +94,10 @@ export default function GraffitiForm({ onSubmit, formName, defaultData }) {
         className={styles.input}
       />
       <label htmlFor="location" className={styles.label}>
-        Location
+        Location *
       </label>
       <input
+        required
         id="location"
         name="location"
         type="text"

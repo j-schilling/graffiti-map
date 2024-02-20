@@ -12,6 +12,10 @@
   margin-bottom: 5px;
 }
 
+.input:invalid {
+  border: 2px solid red;
+}
+
 .label {
   font-weight: bold;
   font-size: 12px;
