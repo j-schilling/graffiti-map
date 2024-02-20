@@ -1,7 +1,9 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import dbConnect from "@/db/connect";
+import User from "@/db/models/User";
 
-export const authOptions = {
+const handler = NextAuth({
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
@@ -10,8 +12,21 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-};
-
-const handler = NextAuth(authOptions);
+  callbacks: {
+    async session({ session }) {
+      return session;
+    },
+    async signIn({ profile }) {
+      console.log(profile);
+      try {
+        await dbConnect();
+        return true;
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
+    },
+  },
+});
 
 export { handler as GET, handler as POST };
