@@ -9,10 +9,11 @@ export async function GET(request) {
 }
 
 export async function POST(request, response) {
+  await dbConnect();
   try {
-    const entryData = request.body;
+    const entryData = await request.json();
     console.log("entrydata", entryData);
-    g;
+
     await Graffiti.create(entryData);
 
     return NextResponse.json({ entryData }, { status: 201 });
