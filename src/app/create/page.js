@@ -2,11 +2,15 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 
 export default function CreateEntryPage() {
-  const router = useRouter();
+  const { data: session } = useSession();
 
+  const router = useRouter();
+  console.log("Session", session);
   async function AddGraffiti(entryData) {
     console.log("entryData on create", entryData);
     // console.log("response", response);
@@ -21,14 +25,16 @@ export default function CreateEntryPage() {
       router.push("/map");
     }
   }
-
-  return (
-    <>
-      <Link href="/map" passHref legacyBehavior>
-        Go back
-      </Link>
-      <h2>Add a Graffiti piece here</h2>
-      <GraffitiForm onSubmit={AddGraffiti} formName={"add-entry"} />
-    </>
-  );
+  if (session) {
+    return (
+      <>
+        <Link href="/map" passHref legacyBehavior>
+          Go back
+        </Link>
+        <h2>Add a Graffiti piece here</h2>
+        <GraffitiForm onSubmit={AddGraffiti} formName={"add-entry"} />
+      </>
+    );
+  }
+  signIn();
 }
