@@ -9,6 +9,7 @@ export default function CreateEntryPage() {
 
   async function AddGraffiti(entryData) {
     console.log("entryData on create", entryData);
+    // console.log("response", response);
     const response = await fetch("/api/graffitis", {
       method: "POST",
       headers: {
