@@ -14,12 +14,22 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
+      const sessionUser = await User.findOne({ email: session.user.email });
+      session.user.id = sessionUser._id;
       return session;
     },
     async signIn({ profile }) {
       console.log(profile);
       try {
         await dbConnect();
+        const userExist = await User.findOne({ email: profile.email });
+        if (!userExist) {
+          const user = await User.create({
+            email: profile.email,
+            name: profile.name,
+            image: profile.picture,
+          });
+        }
         return true;
       } catch (error) {
         console.log(error);
