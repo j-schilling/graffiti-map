@@ -26,7 +26,7 @@ export default function CreateEntryPage() {
       <Link href="/map" passHref legacyBehavior>
         Go back
       </Link>
-      <h2>Add Graffiti</h2>
+      <h2>Add a Graffiti piece here</h2>
       <GraffitiForm onSubmit={AddGraffiti} formName={"add-entry"} />
     </>
   );
