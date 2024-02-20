@@ -1,13 +1,9 @@
 import styles from "./GraffitiForm.module.css";
 import { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
+import Image from "next/image";
 
-export default function GraffitiForm({
-  onSubmit,
-  formName,
-  onChange,
-  defaultData,
-}) {
+export default function GraffitiForm({ onSubmit, formName, defaultData }) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
 
@@ -28,13 +24,10 @@ export default function GraffitiForm({
     const entryData = Object.fromEntries(formData);
 
     // Cloudinary image upload
-    const form = event.currentTarget;
-    const fileInput = Array.from(form.elements).find(
-      ({ name }) => name === "file"
-    );
-    //  ); for (const file of fileInput.files) {
-    //     formData.append("file", file)
-    //   }
+    // const form = event.currentTarget;
+    // // const fileInput = Array.from(form.elements).find(
+    // //   ({ name }) => name === "file"
+    // // );
 
     formData.append("upload_preset", "ml_default");
     console.log("formData", formData);
@@ -49,10 +42,6 @@ export default function GraffitiForm({
     setImageSrc(data.secure_url);
     setUploadData(data);
     console.log("data", data);
-
-    // // Image URLs
-    // const imagesArray = entryData.images.split(",");
-    // const trimmedImagesArray = imagesArray.map((image) => image.trim());
 
     // Coords
     const coordsArray = entryData.coords.split(",");
@@ -77,82 +66,61 @@ export default function GraffitiForm({
   }
 
   return (
-    <>
-      {/* <form
-        method="post"
-        onChange={handleOnChange}
-        onSubmit={handleSubmit}
-      ></form> */}
-      <form
-        aria-labelledby={formName}
-        onSubmit={handleSubmit}
-        className={styles.form}
-      >
-        <p>
-          <input onChange={handleOnChange} type="file" name="file" />
-        </p>
+    <form
+      aria-labelledby={formName}
+      onSubmit={handleSubmit}
+      className={styles.form}
+    >
+      <p>
+        <input onChange={handleOnChange} type="file" name="file" />
+      </p>
 
-        <img src={imageSrc} alt="preview image of uploaded graffiti" />
+      {imageSrc && (
+        <Image
+          src={imageSrc}
+          width={100}
+          height={50}
+          alt="preview image of uploaded graffiti"
+        />
+      )}
 
-        {imageSrc && !uploadData && (
-          <p>
-            <button>Upload Files</button>
-          </p>
-        )}
-        {/* 
-        {uploadData && (
-          <code>
-            <pre>{JSON.stringify(uploadData, null, 2)}</pre>
-          </code>
-        )} */}
-        <label htmlFor="image-urls" className={styles.label}>
-          Image Urls
-        </label>
-        <input
-          id="image-urls"
-          name="images"
-          type="text"
-          // defaultValue={defaultData?.image}
-          className={styles.input}
-        />
-        <label htmlFor="coords" className={styles.label}>
-          Longitude, Lattitude
-        </label>
-        <input
-          id="coords"
-          name="coords"
-          type="text"
-          // defaultValue={defaultData?.mapURL}
-          placeholder="e.g.: 52.50894849139298, 13.39731765733085"
-          className={styles.input}
-        />
-        <label htmlFor="location" className={styles.label}>
-          Location
-        </label>
-        <input
-          id="location"
-          name="location"
-          type="text"
-          // defaultValue={defaultData?.location}
-          className={styles.input}
-          placeholder="e.g.: Kreuzberg, Berlin, Germany"
-        />
-        <label htmlFor="tags" className={styles.label}>
-          Tags (separate with commas)
-        </label>
-        <input
-          id="tags"
-          name="tags"
-          type="text"
-          // defaultValue={defaultData?.location}
-          placeholder="e.g. wildstyle, throwup, rip"
-          className={styles.input}
-        />
-        <button type="submit">
-          {/* {defaultData ? "Update Graffiti" : "Add Graffiti"} */}
-          Add Graffiti
-        </button>
-      </form>
-    </>
+      <label htmlFor="coords" className={styles.label}>
+        Longitude, Lattitude
+      </label>
+      <input
+        id="coords"
+        name="coords"
+        type="text"
+        // defaultValue={defaultData?.mapURL}
+        placeholder="e.g.: 52.50894849139298, 13.39731765733085"
+        className={styles.input}
+      />
+      <label htmlFor="location" className={styles.label}>
+        Location
+      </label>
+      <input
+        id="location"
+        name="location"
+        type="text"
+        // defaultValue={defaultData?.location}
+        className={styles.input}
+        placeholder="e.g.: Kreuzberg, Berlin, Germany"
+      />
+      <label htmlFor="tags" className={styles.label}>
+        Tags (separate with commas)
+      </label>
+      <input
+        id="tags"
+        name="tags"
+        type="text"
+        // defaultValue={defaultData?.location}
+        placeholder="e.g. wildstyle, throwup, rip"
+        className={styles.input}
+      />
+      <button type="submit">
+        {/* {defaultData ? "Update Graffiti" : "Add Graffiti"} */}
+        Add Graffiti
+      </button>
+    </form>
   );
 }
