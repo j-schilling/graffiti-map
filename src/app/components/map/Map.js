@@ -1,4 +1,5 @@
 "use client";
+import NavBar from "../navbar/NavBar";
 import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -124,6 +125,7 @@ export default function Map() {
         center={coords}
         zoom={13}
         scrollWheelZoom={false}
+        className="-z-50"
       >
         <TileLayer
           className={styles.mapgray}
