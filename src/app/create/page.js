@@ -8,7 +8,7 @@ import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 
 export default function CreateEntryPage() {
   const { data: session } = useSession();
-  const creator = session.user.id;
+  const creator = session?.user?.id;
   const router = useRouter();
 
   async function AddGraffiti(entryData) {

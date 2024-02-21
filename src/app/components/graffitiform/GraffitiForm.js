@@ -11,7 +11,7 @@ export default function GraffitiForm({
 }) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
-  console.log("creator", creator);
+
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
 
