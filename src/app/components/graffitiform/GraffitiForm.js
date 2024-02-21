@@ -8,6 +8,7 @@ export default function GraffitiForm({
   creator,
   defaultData,
 }) {
+
   const [imageSrc, setImageSrc] = useState([]);
   // const [uploadData, setUploadData] = useState();
 
