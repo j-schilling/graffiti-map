@@ -1,6 +1,5 @@
 import styles from "./GraffitiForm.module.css";
 import { useState } from "react";
-import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 
 export default function GraffitiForm({
@@ -9,26 +8,38 @@ export default function GraffitiForm({
   creator,
   defaultData,
 }) {
-  const [imageSrc, setImageSrc] = useState();
+  const [imageSrc, setImageSrc] = useState([]);
   const [uploadData, setUploadData] = useState();
-  console.log("creator", creator);
-  function handleOnChange(changeEvent) {
-    const reader = new FileReader();
 
-    reader.onload = function (onLoadEvent) {
-      setImageSrc(onLoadEvent.target.result);
-      setUploadData(undefined);
-    };
-
-    reader.readAsDataURL(changeEvent.target.files[0]);
+  function handleOnChange(e) {
+    for (const file of e.target.files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setImageSrc((imgs) => [...imgs, reader.result]);
+      };
+      reader.onerror = () => {
+        console.log(reader.error);
+      };
+    }
   }
+
+  //   const reader = new FileReader();
+
+  //   reader.onload = function (onLoadEvent) {
+  //     setImageSrc(onLoadEvent.target.result);
+  //     setUploadData(undefined);
+  //   };
+
+  //   reader.readAsDataURL(changeEvent.target.files[0]);
+  // }
 
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const entryData = Object.fromEntries(formData);
 
-    // Cloudinary image upload
+    // Cloudinary image upload => how to deal with the multiple files here?
     formData.append("upload_preset", "ml_default");
 
     const data = await fetch(
@@ -38,7 +49,7 @@ export default function GraffitiForm({
         body: formData,
       }
     ).then((r) => r.json());
-
+    console.log("cloudydata", data);
     setImageSrc(data.secure_url);
     setUploadData(data);
 
@@ -75,17 +86,34 @@ export default function GraffitiForm({
         <label htmlFor="file" className={styles.label}>
           Upload graffiti image
         </label>
-        <input required onChange={handleOnChange} type="file" name="file" />
+        <input
+          required
+          onChange={handleOnChange}
+          type="file"
+          name="file"
+          multiple
+        />
       </p>
 
-      {imageSrc && (
+      {/* {imageSrc && (
         <Image
           src={imageSrc}
           width={100}
           height={50}
           alt="preview image of uploaded graffiti"
         />
-      )}
+      )} */}
+
+      {imageSrc &&
+        imageSrc.map((src, index) => (
+          <Image
+            key={index}
+            src={src}
+            width={100}
+            height={50}
+            alt={`Preview image ${index + 1} of uploaded graffiti`}
+          />
+        ))}
 
       <label htmlFor="coords" className={styles.label}>
         Longitude, Lattitude *
