@@ -8,7 +8,6 @@ import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 
 export default function CreateEntryPage() {
   const { data: session } = useSession();
-  console.log("data", session);
   const creator = session?.user?.id;
   const router = useRouter();
 
@@ -27,10 +26,10 @@ export default function CreateEntryPage() {
   if (session) {
     return (
       <>
-        <Link href="/map" passHref legacyBehavior>
+        <Link href="/map" passHref legacyBehavior className="border-2">
           Go back
         </Link>
-        <h2>Add a Graffiti piece here</h2>
+        <h1 className="text-center">Add a piece to Graffiti Map</h1>
         <GraffitiForm
           onSubmit={AddGraffiti}
           formName={"add-entry"}

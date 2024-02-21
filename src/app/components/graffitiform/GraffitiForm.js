@@ -9,7 +9,7 @@ export default function GraffitiForm({
   defaultData,
 }) {
   const [imageSrc, setImageSrc] = useState([]);
-  const [uploadData, setUploadData] = useState();
+  // const [uploadData, setUploadData] = useState();
 
   function handleOnChange(e) {
     for (const file of e.target.files) {
@@ -24,45 +24,19 @@ export default function GraffitiForm({
     }
   }
 
-  // imageSRC for each im loop request zu cloudinary secure url
-
-  //   const reader = new FileReader();
-
-  //   reader.onload = function (onLoadEvent) {
-  //     setImageSrc(onLoadEvent.target.result);
-  //     setUploadData(undefined);
-  //   };
-
-  //   reader.readAsDataURL(changeEvent.target.files[0]);
-  // }
-
   async function handleSubmit(event) {
-    console.log("ImageSRC", imageSrc);
     event.preventDefault();
     const formData = new FormData(event.target);
     const entryData = Object.fromEntries(formData);
-
-    // Cloudinary image upload => how to deal with the multiple files here?
-    //     formData.append("upload_preset", "ml_default");
-    // imageSrc.forEach(async (element => {
-    //     const response = await fetch(
-    //       "https://api.cloudinary.com/v1_1/ds38ne4yp/image/upload",
-    //       {
-    //         method: "POST",
-    //         body: formData,
-    //       }
-    //     );
-    //     const data = await response.json();})
-    // const firstThreeItems = completeImageArray.slice(0, 3);
 
     async function uploadImages() {
       const completeImageArray = [];
       const firstThreeImages = imageSrc.slice(0, 3);
       for (const element of firstThreeImages) {
         const formData = new FormData();
-        // Assuming `element` is a file or the relevant data for formData
-        formData.append("file", element); // Adjust based on your API requirements
-        formData.append("upload_preset", "ml_default"); // Example additional field
+
+        formData.append("file", element);
+        formData.append("upload_preset", "ml_default");
 
         const response = await fetch(
           "https://api.cloudinary.com/v1_1/ds38ne4yp/image/upload",
@@ -79,11 +53,6 @@ export default function GraffitiForm({
       }
       return completeImageArray;
     }
-
-    console.log("completeImageArray", await uploadImages());
-
-    // setImageSrc(data.secure_url);
-    // setUploadData(data);
 
     // Coords
     const coordsArray = entryData.coords.split(",");
@@ -114,27 +83,16 @@ export default function GraffitiForm({
       onSubmit={handleSubmit}
       className={styles.form}
     >
-      <p>
-        <label htmlFor="file" className={styles.label}>
-          Upload graffiti image
-        </label>
-        <input
-          required
-          onChange={handleOnChange}
-          type="file"
-          name="file"
-          multiple
-        />
-      </p>
-
-      {/* {imageSrc && (
-        <Image
-          src={imageSrc}
-          width={100}
-          height={50}
-          alt="preview image of uploaded graffiti"
-        />
-      )} */}
+      <label htmlFor="file" className={styles.label}>
+        Add up to 3 images of the graffiti piece *
+      </label>
+      <input
+        required
+        onChange={handleOnChange}
+        type="file"
+        name="file"
+        multiple
+      />
 
       {imageSrc &&
         imageSrc.map((src, index) => (
@@ -148,7 +106,7 @@ export default function GraffitiForm({
         ))}
 
       <label htmlFor="coords" className={styles.label}>
-        Longitude, Lattitude *
+        Longitude, Lattitude (e.g. copy from Google Maps or Apple Maps) *
       </label>
       <input
         required
@@ -182,7 +140,10 @@ export default function GraffitiForm({
         placeholder="e.g. wildstyle, throwup, rip"
         className={styles.input}
       />
-      <button type="submit">
+      <button
+        type="submit"
+        className="bg-yellow-400 border-2 w-48 h-16 rounded-md justify-self-center"
+      >
         {/* {defaultData ? "Update Graffiti" : "Add Graffiti"} */}
         Add Graffiti
       </button>
