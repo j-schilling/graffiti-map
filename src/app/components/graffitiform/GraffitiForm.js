@@ -24,6 +24,8 @@ export default function GraffitiForm({
     }
   }
 
+  // imageSRC for each im loop request zu cloudinary secure url
+
   //   const reader = new FileReader();
 
   //   reader.onload = function (onLoadEvent) {
@@ -35,23 +37,53 @@ export default function GraffitiForm({
   // }
 
   async function handleSubmit(event) {
+    console.log("ImageSRC", imageSrc);
     event.preventDefault();
     const formData = new FormData(event.target);
     const entryData = Object.fromEntries(formData);
 
     // Cloudinary image upload => how to deal with the multiple files here?
-    formData.append("upload_preset", "ml_default");
+    //     formData.append("upload_preset", "ml_default");
+    // imageSrc.forEach(async (element => {
+    //     const response = await fetch(
+    //       "https://api.cloudinary.com/v1_1/ds38ne4yp/image/upload",
+    //       {
+    //         method: "POST",
+    //         body: formData,
+    //       }
+    //     );
+    //     const data = await response.json();})
+    // const firstThreeItems = completeImageArray.slice(0, 3);
 
-    const data = await fetch(
-      "https://api.cloudinary.com/v1_1/ds38ne4yp/image/upload",
-      {
-        method: "POST",
-        body: formData,
+    async function uploadImages() {
+      const completeImageArray = [];
+      const firstThreeImages = imageSrc.slice(0, 3);
+      for (const element of firstThreeImages) {
+        const formData = new FormData();
+        // Assuming `element` is a file or the relevant data for formData
+        formData.append("file", element); // Adjust based on your API requirements
+        formData.append("upload_preset", "ml_default"); // Example additional field
+
+        const response = await fetch(
+          "https://api.cloudinary.com/v1_1/ds38ne4yp/image/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        const data = await response.json();
+        console.log("cloudydata", data);
+
+        completeImageArray.push(data.secure_url);
       }
-    ).then((r) => r.json());
-    console.log("cloudydata", data);
-    setImageSrc(data.secure_url);
-    setUploadData(data);
+      return completeImageArray;
+    }
+
+    console.log("completeImageArray", await uploadImages());
+
+    // setImageSrc(data.secure_url);
+    // setUploadData(data);
 
     // Coords
     const coordsArray = entryData.coords.split(",");
@@ -65,7 +97,7 @@ export default function GraffitiForm({
 
     const finalObject = {
       ...entryData,
-      images: [data.secure_url],
+      images: await uploadImages(),
       coords: trimmedCoordsArray,
       creator: creator,
       tags: finalTagsArray,
