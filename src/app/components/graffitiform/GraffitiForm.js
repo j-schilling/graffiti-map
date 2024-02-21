@@ -3,10 +3,15 @@ import { useState } from "react";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 
-export default function GraffitiForm({ onSubmit, formName, defaultData }) {
+export default function GraffitiForm({
+  onSubmit,
+  formName,
+  creator,
+  defaultData,
+}) {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
-
+  console.log("creator", creator);
   function handleOnChange(changeEvent) {
     const reader = new FileReader();
 
@@ -51,6 +56,7 @@ export default function GraffitiForm({ onSubmit, formName, defaultData }) {
       ...entryData,
       images: [data.secure_url],
       coords: trimmedCoordsArray,
+      creator: creator,
       tags: finalTagsArray,
       score: 0,
     };
@@ -90,7 +96,7 @@ export default function GraffitiForm({ onSubmit, formName, defaultData }) {
         name="coords"
         type="text"
         // defaultValue={defaultData?.mapURL}
-        placeholder="e.g.: 52.50894849139298, 13.39731765733085"
+        placeholder="e.g.: 52.501928, 13.397778"
         className={styles.input}
       />
       <label htmlFor="location" className={styles.label}>

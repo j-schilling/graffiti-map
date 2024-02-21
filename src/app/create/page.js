@@ -8,12 +8,10 @@ import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 
 export default function CreateEntryPage() {
   const { data: session } = useSession();
-
+  const creator = session.user.id;
   const router = useRouter();
-  console.log("Session", session);
+
   async function AddGraffiti(entryData) {
-    console.log("entryData on create", entryData);
-    // console.log("response", response);
     const response = await fetch("/api/graffitis", {
       method: "POST",
       headers: {
@@ -32,7 +30,11 @@ export default function CreateEntryPage() {
           Go back
         </Link>
         <h2>Add a Graffiti piece here</h2>
-        <GraffitiForm onSubmit={AddGraffiti} formName={"add-entry"} />
+        <GraffitiForm
+          onSubmit={AddGraffiti}
+          formName={"add-entry"}
+          creator={creator}
+        />
       </>
     );
   }
