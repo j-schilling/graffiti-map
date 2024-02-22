@@ -25,7 +25,7 @@ export default function CreateEntryPage() {
   }
   if (session) {
     return (
-      <>
+      <main className="pb-16">
         <Link href="/map" passHref legacyBehavior className="border-2">
           Go back
         </Link>
@@ -35,7 +35,7 @@ export default function CreateEntryPage() {
           formName={"add-entry"}
           creator={creator}
         />
-      </>
+      </main>
     );
   }
   signIn();
