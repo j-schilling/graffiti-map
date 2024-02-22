@@ -113,13 +113,13 @@ export default function Map() {
   // FlyToMyLocation();
 
   return (
-    <div>
+    <div className="absolute bottom-14 top-0 overflow-hidden">
       {/* <SearchLocation /> */}
       {/* <GetMyLocation /> */}
 
       <MapContainer
         style={{
-          height: "90vh",
+          height: "100vh",
           width: "100vw",
         }}
         center={coords}
