@@ -7,6 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: { gyellow: "#eef101", gwhite: "#fffff7", gwhitedark: "fcfcea" },
       fontFamily: { sans: ["var(--font-ibm-plex)"] },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

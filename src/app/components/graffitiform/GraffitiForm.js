@@ -8,7 +8,6 @@ export default function GraffitiForm({
   creator,
   defaultData,
 }) {
-
   const [imageSrc, setImageSrc] = useState([]);
   // const [uploadData, setUploadData] = useState();
 
@@ -143,7 +142,7 @@ export default function GraffitiForm({
       />
       <button
         type="submit"
-        className="bg-yellow-400 border-2 w-48 h-16 rounded-md justify-self-center"
+        className="bg-gyellow border-2 w-48 h-16 rounded-md justify-self-center"
       >
         {/* {defaultData ? "Update Graffiti" : "Add Graffiti"} */}
         Add Graffiti
