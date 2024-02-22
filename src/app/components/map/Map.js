@@ -1,5 +1,5 @@
 "use client";
-import NavBar from "../navbar/NavBar";
+
 import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";

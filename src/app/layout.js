@@ -1,11 +1,15 @@
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans, Inter } from "next/font/google";
+
 import "./globals.css";
 import { getServerSession } from "next-auth";
 
 import SessionProvider from "./components/sessionprovider/SessionProvider";
 import NavBar from "./components/navbar/NavBar";
 
-const inter = Inter({ subsets: ["latin"] });
+const ibmplexsans = IBM_Plex_Sans({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Graffiti Map",
@@ -16,7 +20,7 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={ibmplexsans.className}>
         <SessionProvider session={session}>
           <NavBar />
           {children}
