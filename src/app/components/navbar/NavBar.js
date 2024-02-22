@@ -14,7 +14,7 @@ export default function NavBar() {
   const [active, setActive] = useState(0);
 
   return (
-    <div className="bg-gwhitedark px-4 h-14 fixed bottom-0 w-full">
+    <div className="bg-red-400	 px-4 h-14 fixed bottom-0 w-full">
       <ul className="flex relative">
         {Menus.map((menu, i) => (
           <li key={i} className="w-20">

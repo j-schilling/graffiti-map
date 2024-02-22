@@ -7,8 +7,9 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 
 export default function CreateEntryPage() {
-  const { data: session } = useSession();
-  const creator = session?.user?.id;
+  const session = useSession();
+  const creator = session.data?.user?.id;
+
   const router = useRouter();
 
   async function AddGraffiti(entryData) {
@@ -23,7 +24,11 @@ export default function CreateEntryPage() {
       router.push("/map");
     }
   }
-  if (session) {
+
+  if (session.status === "loading") {
+    return null;
+  }
+  if (session.status === "authenticated") {
     return (
       <main className="pb-16">
         <Link href="/map" passHref legacyBehavior className="border-2">
