@@ -14,13 +14,13 @@ export default function NavBar() {
   const [active, setActive] = useState(0);
 
   return (
-    <div className="bg-yellow-50 h-18 px-4 fixed bottom-0 w-full">
+    <div className="bg-yellow-50 px-4 h-14 fixed bottom-0 w-full">
       <ul className="flex relative">
         {Menus.map((menu, i) => (
           <li key={i} className="w-20">
             <Link
               href={menu.href}
-              className="flex flex-col text-center p-5 cursor-pointer px-4"
+              className="flex flex-col text-center p-2 cursor-pointer"
               onClick={() => setActive(i)}
             >
               <span
