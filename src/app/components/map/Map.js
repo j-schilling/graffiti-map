@@ -119,13 +119,13 @@ export default function Map() {
 
       <MapContainer
         style={{
-          height: "100vh",
+          height: "90vh",
           width: "100vw",
         }}
         center={coords}
         zoom={13}
         scrollWheelZoom={false}
-        className="-z-50"
+        className=""
       >
         <TileLayer
           className={styles.mapgray}
