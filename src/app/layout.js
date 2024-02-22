@@ -1,4 +1,4 @@
-import { IBM_Plex_Sans, Inter } from "next/font/google";
+import { IBM_Plex_Sans } from "next/font/google";
 
 import "./globals.css";
 import { getServerSession } from "next-auth";
@@ -9,6 +9,7 @@ import NavBar from "./components/navbar/NavBar";
 const ibmplexsans = IBM_Plex_Sans({
   weight: ["400", "700"],
   subsets: ["latin"],
+  variable: "--font-ibm-plex",
 });
 
 export const metadata = {
@@ -20,7 +21,7 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
     <html lang="en">
-      <body className={ibmplexsans.className}>
+      <body className={`${ibmplexsans.variable} font-sans`}>
         <SessionProvider session={session}>
           <NavBar />
           {children}
