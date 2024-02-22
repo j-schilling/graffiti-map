@@ -144,9 +144,10 @@ export default function GraffitiForm({
         type="submit"
         className="bg-gyellow border-2 w-48 h-16 rounded-md justify-self-center "
       >
-        {/* {defaultData ? "Update Graffiti" : "Add Graffiti"} */}
         Add Graffiti
       </button>
     </form>
   );
 }
+
+// /* {defaultData ? "Update Graffiti" : "Add Graffiti"} */
