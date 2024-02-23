@@ -22,6 +22,7 @@ export default function CreateEntryPage() {
     });
     if (response.ok) {
       router.push("/map");
+      alert("Yes! You have added this graffiti. Check it out on the map now:");
     }
   }
 
