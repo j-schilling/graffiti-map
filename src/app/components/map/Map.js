@@ -18,32 +18,45 @@ import Image from "next/image";
 // import LocationButton from "../locationbutton/LocationButton";
 
 export default function Map() {
-  const [coords, setCoords] = useState([52.50349403885416, 13.433999041580332]);
+  const [coords, setCoords] = useState(null);
+  const [zoom, setZoom] = useState(2);
+  const [isCurrentPosition, setIsCurrentPosition] = useState(false);
+
+  //put function her outside of useEffect
 
   useEffect(() => {
     function geoFindme() {
       function success(position) {
         const lat = position.coords.latitude;
         const long = position.coords.longitude;
-        // Update the state with the new latLong
+        // Update the state with the new lat long
         setCoords([lat, long]);
+        setIsCurrentPosition(true);
       }
       function error() {
+        setCoords([50.94252260860335, 6.959073771647771]);
+        setZoom(2);
         console.log("Unable to retrieve your location");
       }
 
       if (!navigator.geolocation) {
+        setCoords([50.94252260860335, 6.959073771647771]);
+        setZoom(2);
         console.log("Geolocation is not supported by your browser");
       } else {
+        setZoom(13);
         console.log("Locating…");
         navigator.geolocation.getCurrentPosition(success, error);
       }
     }
 
-    // Call geoFindme to update latLong state
+    // Call geoFindme to update coords state
     geoFindme();
   }, []);
 
+  if (!coords) {
+    return "Loading...";
+  }
   // 52.4785193061056, 13.347730739696487
   // const SearchLocation = () => {
   //   return (
@@ -147,9 +160,8 @@ export default function Map() {
           width: "100vw",
         }}
         center={coords}
-        zoom={13}
+        zoom={zoom}
         scrollWheelZoom={false}
-        className=""
       >
         <TileLayer
           className={styles.mapgray}
@@ -157,7 +169,6 @@ export default function Map() {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           maxZoom={19}
         />
-
         {/* <LocationButton
           // FlyToMyLocation={FlyToMyLocation}
           className={styles.currentlocationbutton}
@@ -170,21 +181,23 @@ export default function Map() {
           />
         </LocationButton> */}
         <GraffitiMarker />
-        <Marker
-          icon={
-            new L.Icon({
-              iconUrl: PositionMarkerIcon.src,
-              iconRetinaUrl: PositionMarkerIcon.src,
-              iconSize: [40, 40],
-              iconAnchor: [12.5, 15],
+        {isCurrentPosition && (
+          <Marker
+            icon={
+              new L.Icon({
+                iconUrl: PositionMarkerIcon.src,
+                iconRetinaUrl: PositionMarkerIcon.src,
+                iconSize: [40, 40],
+                iconAnchor: [12.5, 15],
 
-              // popupAnchor: [0, -41],
-              // shadowUrl: MarkerShadow.src,
-              // shadowSize: [41, 41],
-            })
-          }
-          position={coords}
-        ></Marker>
+                // popupAnchor: [0, -41],
+                // shadowUrl: MarkerShadow.src,
+                // shadowSize: [41, 41],
+              })
+            }
+            position={coords}
+          />
+        )}
       </MapContainer>
     </div>
   );
