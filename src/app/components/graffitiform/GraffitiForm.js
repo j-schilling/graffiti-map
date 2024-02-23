@@ -7,6 +7,8 @@ export default function GraffitiForm({
   formName,
   creator,
   defaultData,
+  loadingAddGraffiti,
+  setLoadingAddGraffiti,
 }) {
   const [imageSrc, setImageSrc] = useState([]);
   const [buttonColor, setButtonColor] = useState("bg-gyellow");
@@ -26,6 +28,7 @@ export default function GraffitiForm({
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setLoadingAddGraffiti(true);
     const formData = new FormData(event.target);
     const entryData = Object.fromEntries(formData);
 
@@ -142,11 +145,24 @@ export default function GraffitiForm({
       />
       <button
         type="submit"
-        className={`${buttonColor} border-2 w-48 h-16 rounded-md justify-self-center`}
-        onClick={() => setButtonColor("bg-yellow-500")} // Update the color on click
+        className={`${buttonColor} border-2 w-48 h-16 rounded-md justify-self-center`} // Update the color on click
       >
         Add Graffiti
       </button>
+      {loadingAddGraffiti && (
+        <div className="absolute bottom-0 h-full bg-gwhitedark opacity-50">
+          <Image
+            className={"p-4 opacity-0 relative"}
+            src="https://i.giphy.com/d1TwYpDcR1zPi.webp"
+            width={462}
+            height={350}
+            alt="animated GIF of a spray can"
+          />
+          <h1 className="relative -top-24 text-center font-bold text-2xl text-gyellow ">
+            Uploading...
+          </h1>
+        </div>
+      )}
     </form>
   );
 }
