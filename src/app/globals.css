@@ -15,6 +15,10 @@
 .swiper-pagination {
   color: white !important;
 }
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+}
 /* 
 .loadinganimation{
   animation:

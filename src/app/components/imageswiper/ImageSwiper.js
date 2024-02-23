@@ -15,9 +15,10 @@ export default function ImageSwiper({ data }) {
       <div className="container">
         <Swiper
           navigation
-          pagination={{ type: "fraction" }}
+          pagination
+          // ={{ type: "fraction" }}
           modules={[Navigation, Pagination]}
-          className="h-96 w-full rounded-lg"
+          className="h-auto w-full rounded-s"
         >
           {data.graffiti.images.map((image, index) => (
             <SwiperSlide key={index}>
@@ -26,9 +27,8 @@ export default function ImageSwiper({ data }) {
                   src={image}
                   alt="Picture of a graffiti piece"
                   // fill={true}
-                  width="0"
-                  height="0"
-                  sizes="100vw"
+                  width={4032}
+                  height={3024}
                   className="w-full h-auto"
                 ></Image>
               </div>
