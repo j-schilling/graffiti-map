@@ -4,7 +4,6 @@ import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import PositionMarkerIcon from "/public/map/position-marker-icon.png";
-import LocationIcon from "/public/map/location-icon.png";
 import {
   MapContainer,
   TileLayer,
@@ -14,8 +13,6 @@ import {
 } from "react-leaflet";
 import { useEffect, useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
-import Image from "next/image";
-// import LocationButton from "../locationbutton/LocationButton";
 
 export default function Map() {
   const [coords, setCoords] = useState(null);
@@ -55,7 +52,7 @@ export default function Map() {
   }, []);
 
   if (!coords) {
-    return "Loading...";
+    return "Loading Graffiti Map...";
   }
   // 52.4785193061056, 13.347730739696487
   // const SearchLocation = () => {
@@ -151,9 +148,6 @@ export default function Map() {
 
   return (
     <div className="absolute bottom-14 top-0 overflow-hidden">
-      {/* <SearchLocation /> */}
-      {/* <GetMyLocation /> */}
-
       <MapContainer
         style={{
           height: "100vh",
@@ -189,10 +183,6 @@ export default function Map() {
                 iconRetinaUrl: PositionMarkerIcon.src,
                 iconSize: [40, 40],
                 iconAnchor: [12.5, 15],
-
-                // popupAnchor: [0, -41],
-                // shadowUrl: MarkerShadow.src,
-                // shadowSize: [41, 41],
               })
             }
             position={coords}
