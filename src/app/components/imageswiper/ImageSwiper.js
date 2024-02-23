@@ -27,8 +27,8 @@ export default function ImageSwiper({ data }) {
                   src={image}
                   alt="Picture of a graffiti piece"
                   // fill={true}
-                  width={4032}
-                  height={3024}
+                  width={504}
+                  height={378}
                   className="w-full h-auto"
                 ></Image>
               </div>

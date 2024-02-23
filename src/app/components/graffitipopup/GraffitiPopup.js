@@ -10,7 +10,7 @@ export default function GraffitiPopup({ image, id }) {
       <Link href={id}>
         <Image
           src={image}
-          width={300}
+          width={250}
           height={150}
           alt="Picture of a graffiti piece"
         />
