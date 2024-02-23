@@ -18,7 +18,31 @@ import Image from "next/image";
 // import LocationButton from "../locationbutton/LocationButton";
 
 export default function Map() {
-  const [coords, setCoords] = useState([52.4785193061056, 13.347730739696487]);
+  const [coords, setCoords] = useState([52.50349403885416, 13.433999041580332]);
+
+  useEffect(() => {
+    function geoFindme() {
+      function success(position) {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        // Update the state with the new latLong
+        setCoords([lat, long]);
+      }
+      function error() {
+        console.log("Unable to retrieve your location");
+      }
+
+      if (!navigator.geolocation) {
+        console.log("Geolocation is not supported by your browser");
+      } else {
+        console.log("Locating…");
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+    }
+
+    // Call geoFindme to update latLong state
+    geoFindme();
+  }, []);
 
   // 52.4785193061056, 13.347730739696487
   // const SearchLocation = () => {
