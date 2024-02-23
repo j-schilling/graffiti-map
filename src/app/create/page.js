@@ -1,18 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 
 export default function CreateEntryPage() {
+  const [loadingAddGraffiti, setLoadingAddGraffiti] = useState(false);
+
   const session = useSession();
   const creator = session.data?.user?.id;
 
   const router = useRouter();
 
   async function AddGraffiti(entryData) {
+    setLoadingAddGraffiti(true);
     const response = await fetch("/api/graffitis", {
       method: "POST",
       headers: {
@@ -20,7 +24,12 @@ export default function CreateEntryPage() {
       },
       body: JSON.stringify(entryData),
     });
+    if (!response.ok) {
+      alert("Ooops, something went wrong. Your graffiti was not added :(");
+      console.log(error);
+    }
     if (response.ok) {
+      setLoadingAddGraffiti(false);
       router.push("/map");
       alert("Yes! You have added this graffiti. Check it out on the map now:");
     }
@@ -37,6 +46,8 @@ export default function CreateEntryPage() {
         </Link>
         <h1 className="text-center">Add a piece to Graffiti Map</h1>
         <GraffitiForm
+          setLoadingAddGraffiti={setLoadingAddGraffiti}
+          loadingAddGraffiti={loadingAddGraffiti}
           onSubmit={AddGraffiti}
           formName={"add-entry"}
           creator={creator}
