@@ -1,20 +1,46 @@
-export default function SayHelloTeaser() {
+import Link from "next/link";
+import Image from "next/image";
+
+import createIcon from "../../../../public/icons/create_GraffitiMap.png";
+import mapImage from "../../../../public/teaser/mapteaser.png";
+
+export default function CreateTeaser() {
   return (
-    <div className="w-full h-full border-black border-2 rounded-sm shadow-sm bg-white">
-      <a href="" className="block cursor-pointer">
-        <article className="w-full h-full">
-          {/* <figure className="w-full h-1/2 border-black border-b-2"></figure> */}
-          <div className="px-6 py-5 text-left h-full">
-            {/* <p className="text-base mb-4">Welcome to Graffiti Map</p>
-            <h1 className="text-[32px] mb-4">Neo Brutallism</h1> */}
-            <p className="text-s  line-clamp-4">
-              Welcome to Graffiti Map, where graffiti fans can check out
-              graffiti in their area and all around the world!
+    <div className="w-full h-full border-black border rounded shadow-lg white">
+      <Link href="/create">
+        <article className="px-4 w-full h-full flex flex-row gap-3 items-center bg-white">
+          <Image
+            src={createIcon}
+            width={100}
+            height={100}
+            alt="create a graffiti icon"
+          />
+          <div className="text-left h-full flex flex-col gap-4 p-4">
+            {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
+            <h1 className="text-[32px] ">Create one</h1>
+            <p className="text-s">
+              Take a picture of a graffiti and add it on the map for the world
+              to see.
             </p>
-            {/* <strong>Read More</strong> */}
+            <strong className="underline decoration-4 decoration-gyellow	">{`Let's go`}</strong>
           </div>
         </article>
-      </a>
+      </Link>
+    </div>
+  );
+}
+
+export function MapTeaser() {
+  return (
+    <div className="w-full h-full border-black border rounded shadow-lg white">
+      <Link href="/map">
+        <Image
+          src={mapImage}
+          width={598}
+          height={158}
+          alt="graffiti map with markers and pop up image"
+        />
+      </Link>
     </div>
   );
 }
