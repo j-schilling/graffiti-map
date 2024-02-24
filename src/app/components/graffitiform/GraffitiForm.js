@@ -109,7 +109,8 @@ export default function GraffitiForm({
         ))}
 
       <label htmlFor="coords" className={styles.label}>
-        Longitude, Lattitude (e.g. copy from Google Maps or Apple Maps) *
+        Longitude, Lattitude (e.g. copy from Google Maps or Apple Maps) * <br />
+        Must look exactly like this:
       </label>
       <input
         required
@@ -117,7 +118,7 @@ export default function GraffitiForm({
         name="coords"
         type="text"
         // defaultValue={defaultData?.mapURL}
-        placeholder="e.g.: 52.501928, 13.397778"
+        placeholder="52.501928, 13.397778"
         className={styles.input}
       />
       <label htmlFor="location" className={styles.label}>
