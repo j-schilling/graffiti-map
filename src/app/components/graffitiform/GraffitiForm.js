@@ -11,7 +11,6 @@ export default function GraffitiForm({
   setLoadingAddGraffiti,
 }) {
   const [imageSrc, setImageSrc] = useState([]);
-  const [buttonColor, setButtonColor] = useState("bg-gyellow");
 
   function handleOnChange(e) {
     for (const file of e.target.files) {
@@ -112,7 +111,7 @@ export default function GraffitiForm({
 
       <label htmlFor="coords" className={styles.label}>
         Longitude, Lattitude (e.g. copy from Google Maps or Apple Maps) * <br />
-        Must look exactly like this:
+        Must look exactly like this: 52.501928, 13.397778
       </label>
       <input
         required
@@ -148,7 +147,7 @@ export default function GraffitiForm({
       />
       <button
         type="submit"
-        className={`${buttonColor} border-2 w-48 h-16 rounded-md justify-self-center`} // Update the color on click
+        className={`bg-gyellow border-2 w-48 h-16 rounded-md justify-self-center`} // Update the color on click
       >
         Add Graffiti
       </button>
