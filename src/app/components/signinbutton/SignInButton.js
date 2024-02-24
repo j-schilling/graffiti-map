@@ -11,7 +11,9 @@ export default function SignInButton() {
         {session?.user?.name} <br />
         <button
           className="h-12 border-black border-2 p-2.5 bg-ggreymid"
-          onClick={() => signOut()}
+          onClick={() => {
+            signOut();
+          }}
         >
           Sign out
         </button>
