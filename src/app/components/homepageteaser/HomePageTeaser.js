@@ -18,7 +18,7 @@ export default function CreateTeaser() {
           <div className="text-left h-full flex flex-col gap-2 p-3">
             {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
             <h1 className="text-2xl font-mono">Create one</h1>
-            <p className="text-s">
+            <p>
               Take a picture of a graffiti and add it on the map for the world
               to see.
             </p>

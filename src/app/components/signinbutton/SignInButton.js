@@ -9,7 +9,12 @@ export default function SignInButton() {
     return (
       <>
         {session?.user?.name} <br />
-        <button onClick={() => signOut()}>Sign out</button>
+        <button
+          className="h-12 border-black border-2 p-2.5 bg-ggreymid"
+          onClick={() => signOut()}
+        >
+          Sign out
+        </button>
       </>
     );
   }
@@ -17,6 +22,11 @@ export default function SignInButton() {
     <>
       Not signed in <br />
       <button onClick={() => signIn("Google")}>Sign in</button>
+      {/* <button
+     class="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF]"
+     >
+  Simple Button
+  </button> */}
     </>
   );
 }

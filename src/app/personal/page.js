@@ -2,6 +2,9 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import SignInButton from "../components/signinbutton/SignInButton";
+import ProfileCard from "./ProfileCard";
+import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
 
 export default function Personal() {
   const session = useSession();
@@ -11,17 +14,9 @@ export default function Personal() {
   }
   if (session.status === "authenticated") {
     return (
-      <main className="flex flex-col">
-        <h2 className="text-center">Your profile</h2>
-        <Image
-          src={session.data.user.image}
-          width={100}
-          height={100}
-          alt="Your profile picture"
-          className="text-center"
-        />
-        {session.data.user.name} <br />
-        <button onClick={() => signOut()}>Sign out</button>
+      <main className="flex flex-col gap-8 p-6 items-center	">
+        <GraffitiMapLogo width={160} height={66.75} />
+        <ProfileCard sessionData={session.data} />
       </main>
     );
   }
