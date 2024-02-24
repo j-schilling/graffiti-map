@@ -58,7 +58,9 @@ export default function GraffitiForm({
     }
 
     // Coords
-    const coordsArray = entryData.coords.split(",");
+    const cleanStr = entryData.coords.replace("(", "");
+    const veryCleanStr = cleanStr.replace(")", "");
+    const coordsArray = veryCleanStr.split(",");
     const trimmedCoordsArray = coordsArray.map((coord) => coord.trim());
 
     // Tags
