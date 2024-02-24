@@ -7,7 +7,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: { gyellow: "#eef101", gwhite: "#fffff7", gwhitedark: "#fcfcea" },
+      colors: {
+        gyellow: "#eef101",
+        gwhite: "#fffff7",
+        gwhitedark: "#fcfcea",
+        ggreylight: "#efefef",
+        ggreymid: "#dfdfdf",
+        ggreydark: "#d1d1d1",
+        gwhitewhite: "#ffffff",
+      },
       fontFamily: { sans: ["var(--font-ibm-plex)"] },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
