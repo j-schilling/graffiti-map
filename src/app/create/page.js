@@ -25,7 +25,9 @@ export default function CreateEntryPage() {
       body: JSON.stringify(entryData),
     });
     if (!response.ok) {
-      alert("Ooops, something went wrong. Your graffiti was not added :(");
+      alert(
+        "Ooops, something went wrong. Your graffiti was not added :( Please check, if longitude and latitude are entered in the required format. Thanks!"
+      );
       console.log(error);
     }
     if (response.ok) {
