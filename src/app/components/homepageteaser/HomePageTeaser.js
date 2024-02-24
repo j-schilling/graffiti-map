@@ -8,16 +8,16 @@ export default function CreateTeaser() {
   return (
     <div className="w-full h-full border-black border rounded shadow-lg white">
       <Link href="/create">
-        <article className="px-4 w-full h-full flex flex-row gap-3 items-center bg-white">
+        <article className="p-3 w-full h-full flex flex-row gap-1 items-center bg-white">
           <Image
             src={createIcon}
-            width={100}
-            height={100}
+            width={50}
+            height={50}
             alt="create a graffiti icon"
           />
-          <div className="text-left h-full flex flex-col gap-4 p-4">
+          <div className="text-left h-full flex flex-col gap-2 p-3">
             {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
-            <h1 className="text-[32px] ">Create one</h1>
+            <h1 className="text-2xl font-mono">Create one</h1>
             <p className="text-s">
               Take a picture of a graffiti and add it on the map for the world
               to see.
