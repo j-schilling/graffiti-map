@@ -157,10 +157,13 @@ export default function GraffitiForm({
         </div>
         <button
           type="submit"
-          className="bg-gyellow w-48 h-16 border-black border rounded p-2.5" // Update the color on click"
+          className="bg-gyellow w-48 h-16 border-black border rounded p-2.5 " // Update the color on click"
         >
           Add Graffiti
         </button>
+        <button
+          className="bg-white w-48 h-16 rounded p-2.5 " // Update the color on click"
+        ></button>
         {loadingAddGraffiti && (
           <div className="absolute bottom-0 h-full bg-gwhitedark opacity-50">
             <Image
