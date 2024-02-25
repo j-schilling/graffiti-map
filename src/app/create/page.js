@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
+import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
 
 export default function CreateEntryPage() {
   const [loadingAddGraffiti, setLoadingAddGraffiti] = useState(false);
@@ -42,11 +42,9 @@ export default function CreateEntryPage() {
   }
   if (session.status === "authenticated") {
     return (
-      <main>
-        <Link href="/map" passHref legacyBehavior className="border-2">
-          Go back
-        </Link>
-        <h1 className="text-center">Add a piece to Graffiti Map</h1>
+      <main className="flex flex-col gap-4 p-4 items-center">
+        <GraffitiMapLogo width={160} height={66.75} />
+        <h1 className="font-bold text-lg">{`Let's put a graffiti on the map`}</h1>
         <GraffitiForm
           setLoadingAddGraffiti={setLoadingAddGraffiti}
           loadingAddGraffiti={loadingAddGraffiti}
