@@ -1,4 +1,3 @@
-import styles from "./GraffitiForm.module.css";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -85,74 +84,90 @@ export default function GraffitiForm({
   }
 
   return (
-    <div className="">
+    <div>
       <form
         aria-labelledby={formName}
         onSubmit={handleSubmit}
-        className={styles.form}
+        className="p-4 flex flex-col gap-4 items-stretch"
       >
-        <label htmlFor="file" className={styles.label}>
-          Add up to 3 images of the graffiti piece *
-        </label>
-        <input
-          required
-          onChange={handleOnChange}
-          type="file"
-          name="file"
-          multiple
-        />
-
-        {imageSrc &&
-          imageSrc.map((src, index) => (
-            <Image
-              key={index}
-              src={src}
-              width={100}
-              height={50}
-              alt={`Preview image ${index + 1} of uploaded graffiti`}
-            />
-          ))}
-
-        <label htmlFor="coords" className={styles.label}>
-          Longitude, Lattitude (e.g. copy from Google Maps or Apple Maps) *{" "}
-          <br />
-          Must look exactly like this: 52.501928, 13.397778
-        </label>
-        <input
-          required
-          id="coords"
-          name="coords"
-          type="text"
-          // defaultValue={defaultData?.mapURL}
-          placeholder="52.501928, 13.397778"
-          className={styles.input}
-        />
-        <label htmlFor="location" className={styles.label}>
-          Location *
-        </label>
-        <input
-          required
-          id="location"
-          name="location"
-          type="text"
-          // defaultValue={defaultData?.location}
-          className={styles.input}
-          placeholder="e.g.: Kreuzberg, Berlin, Germany"
-        />
-        <label htmlFor="tags" className={styles.label}>
-          Tags (separate with commas)
-        </label>
-        <input
-          id="tags"
-          name="tags"
-          type="text"
-          // defaultValue={defaultData?.location}
-          placeholder="e.g. wildstyle, throwup, rip"
-          className={styles.input}
-        />
+        <div className="flex flex-col flex-wrap">
+          <label htmlFor="file">
+            Add up to 3 images of the graffiti piece *
+          </label>
+          <label htmlFor="fileUpload">Upload file</label>
+          <input
+            required
+            onChange={handleOnChange}
+            type="file"
+            name="file"
+            multiple
+            className="file:h-12 file:border-black file:border file:rounded file:p-2.5 file:bg-ggreymid py-2"
+          />
+          <div className="flex flex-row gap-2 flex-wrap">
+            {imageSrc &&
+              imageSrc.map((src, index) => (
+                <Image
+                  key={index}
+                  src={src}
+                  width={100}
+                  height={50}
+                  alt={`Preview image ${index + 1} of uploaded graffiti`}
+                />
+              ))}
+          </div>
+        </div>
+        <div>
+          <label htmlFor="coords" className="flex flex-col">
+            Longitude, Lattitude *
+          </label>
+          <p>
+            (e.g. copy from Google Maps or Apple Maps)
+            <br />
+            <strong className="text-sm">
+              Watch out: Must look exactly like this: <br />
+              52.501928, 13.397778
+            </strong>
+          </p>
+          <input
+            required
+            id="coords"
+            name="coords"
+            type="text"
+            // defaultValue={defaultData?.mapURL}
+            placeholder="52.501928, 13.397778"
+            className="w-full border border-black rounded p-3 invalid:border-red-500"
+          />
+        </div>
+        <div>
+          <label htmlFor="location" className="flex flex-col">
+            Location *
+          </label>
+          <input
+            required
+            id="location"
+            name="location"
+            type="text"
+            // defaultValue={defaultData?.location}
+            className="w-full border border-black rounded p-3 invalid:border-red-500"
+            placeholder="e.g.: Kreuzberg, Berlin, Germany"
+          />
+        </div>
+        <div className="pb-4">
+          <label htmlFor="tags" className="flex flex-col">
+            Tags (separate with commas)
+          </label>
+          <input
+            id="tags"
+            name="tags"
+            type="text"
+            // defaultValue={defaultData?.location}
+            placeholder="e.g. wildstyle, mural, rip"
+            className="w-full border border-black rounded p-3"
+          />
+        </div>
         <button
           type="submit"
-          className={`bg-gyellow border-2 w-48 h-16 rounded-md justify-self-center`} // Update the color on click
+          className="bg-gyellow w-48 h-16 border-black border rounded p-2.5" // Update the color on click"
         >
           Add Graffiti
         </button>
