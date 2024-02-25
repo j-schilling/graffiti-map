@@ -14,7 +14,7 @@ export default function Personal() {
   }
   if (session.status === "authenticated") {
     return (
-      <main className="flex flex-col gap-8 p-6 items-center">
+      <main className="flex flex-col gap-8 p-5 items-center">
         <GraffitiMapLogo width={160} height={66.75} />
         <ProfileCard sessionData={session.data} />
       </main>

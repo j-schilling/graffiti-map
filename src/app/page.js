@@ -5,7 +5,7 @@ import { MapTeaser } from "./components/homepageteaser/HomePageTeaser";
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-8 p-6 items-center">
+    <main className="flex flex-col gap-8 p-5 items-center">
       <GraffitiMapLogo width={320} height={133.5} />
       <section>
         <p className="px-4">

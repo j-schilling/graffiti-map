@@ -42,7 +42,7 @@ export default function CreateEntryPage() {
   }
   if (session.status === "authenticated") {
     return (
-      <main className="flex flex-col gap-8 p-6 items-center">
+      <main className="flex flex-col gap-8 p-5 items-center">
         <Link href="/map" passHref legacyBehavior className="border-2">
           Go back
         </Link>
