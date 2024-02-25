@@ -1,5 +1,6 @@
 "use client";
 import useSWR from "swr";
+import GraffitiPreview from "../graffitipreview/GraffitiPreview";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -9,6 +10,7 @@ export default function GraffitiList() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
 
-  return <article>HELLO WORLD</article>;
-  //   data.entries.map((graffiti) =>
+  return data.entries.map((graffiti) => (
+    <GraffitiPreview key={graffiti._id} graffitidata={graffiti} />
+  ));
 }
