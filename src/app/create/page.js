@@ -42,7 +42,8 @@ export default function CreateEntryPage() {
   }
   if (session.status === "authenticated") {
     return (
-      <main className="flex flex-col gap-4 p-4 items-center">
+      <main className="pb-4">
+        {/* flex flex-col gap-4 p-4 items-center */}
         {/* <GraffitiMapLogo width={160} height={66.75} />
         <h1 className="font-bold text-lg">{`Let's put a graffiti on the map`}</h1> */}
         <GraffitiForm
