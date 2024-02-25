@@ -84,7 +84,7 @@ export default function GraffitiForm({
   }
 
   return (
-    <div className="">
+    <div className="absolute left-4">
       <form
         aria-labelledby={formName}
         onSubmit={handleSubmit}
@@ -117,12 +117,11 @@ export default function GraffitiForm({
         </div>
         <div className="flex flex-col">
           <label htmlFor="coords">Longitude, Lattitude *</label>
-          <p>
-            {`(e.g. copy from Google Maps or Apple Maps)`}
-            <strong className="text-sm">
-              Watch out: Must look exactly like this: 52.501928, 13.397778
-            </strong>
+          <p>{`(e.g. copy from Google Maps or Apple Maps)`}</p>
+          <p className="text-sm">
+            Watch out: Must look exactly like this: 52.501928, 13.397778
           </p>
+
           <input
             required
             id="coords"
