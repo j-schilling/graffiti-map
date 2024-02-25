@@ -14,7 +14,7 @@ export default function GraffitiMarker() {
 
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
-  console.log("data", data);
+
   return data.entries.map((graffiti) => (
     <Marker
       key={graffiti._id}

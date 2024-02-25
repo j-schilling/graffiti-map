@@ -2,6 +2,7 @@ import SignInButton from "./components/signinbutton/SignInButton";
 import GraffitiMapLogo from "./components/graffitimaplogo/GraffitiMapLogo";
 import CreateTeaser from "./components/homepageteaser/HomePageTeaser";
 import { MapTeaser } from "./components/homepageteaser/HomePageTeaser";
+import GraffitiList from "./components/graffitilist/GraffitiList";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <MapTeaser />
       <CreateTeaser />
       <SignInButton />
+      <GraffitiList />
     </main>
   );
 }
