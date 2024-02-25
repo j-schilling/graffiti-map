@@ -85,7 +85,7 @@ export default function GraffitiForm({
   }
 
   return (
-    <div className="w-full h-full border-black border rounded shadow-lg white">
+    <div className="">
       <form
         aria-labelledby={formName}
         onSubmit={handleSubmit}
