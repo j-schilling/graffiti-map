@@ -84,7 +84,7 @@ export default function GraffitiForm({
   }
 
   return (
-    <div>
+    <div className="">
       <form
         aria-labelledby={formName}
         onSubmit={handleSubmit}
@@ -94,14 +94,13 @@ export default function GraffitiForm({
           <label htmlFor="file">
             Add up to 3 images of the graffiti piece *
           </label>
-          <label htmlFor="fileUpload">Upload file</label>
           <input
             required
             onChange={handleOnChange}
             type="file"
             name="file"
             multiple
-            className="file:h-12 file:border-black file:border file:rounded file:p-2.5 file:bg-ggreymid py-2"
+            className="file:h-12 file:text-xs file:border-black file:border file:rounded file:bg-ggreymid py-2"
           />
           <div className="flex flex-row gap-2 flex-wrap">
             {imageSrc &&
@@ -116,16 +115,12 @@ export default function GraffitiForm({
               ))}
           </div>
         </div>
-        <div>
-          <label htmlFor="coords" className="flex flex-col">
-            Longitude, Lattitude *
-          </label>
+        <div className="flex flex-col">
+          <label htmlFor="coords">Longitude, Lattitude *</label>
           <p>
-            (e.g. copy from Google Maps or Apple Maps)
-            <br />
+            {`(e.g. copy from Google Maps or Apple Maps)`}
             <strong className="text-sm">
-              Watch out: Must look exactly like this: <br />
-              52.501928, 13.397778
+              Watch out: Must look exactly like this: 52.501928, 13.397778
             </strong>
           </p>
           <input
@@ -138,10 +133,8 @@ export default function GraffitiForm({
             className="w-full border border-black rounded p-3 invalid:border-red-500"
           />
         </div>
-        <div>
-          <label htmlFor="location" className="flex flex-col">
-            Location *
-          </label>
+        <div className="flex flex-col">
+          <label htmlFor="location">Location *</label>
           <input
             required
             id="location"
@@ -152,10 +145,8 @@ export default function GraffitiForm({
             placeholder="e.g.: Kreuzberg, Berlin, Germany"
           />
         </div>
-        <div className="pb-4">
-          <label htmlFor="tags" className="flex flex-col">
-            Tags (separate with commas)
-          </label>
+        <div className="pb-4 flex flex-col">
+          <label htmlFor="tags">Tags (separate with commas)</label>
           <input
             id="tags"
             name="tags"
