@@ -63,8 +63,11 @@ export default function GraffitiForm({
     const trimmedCoordsArray = coordsArray.map((coord) => coord.trim());
 
     // Tags
-    const tagsArray = entryData.tags.split(",");
-    const finalTagsArray = tagsArray.map((tag) =>
+    function returnTagsArr() {
+      const tagsStr = entryData.tags;
+      return !tagsStr ? [] : tagsStr.split(",");
+    }
+    const finalTagsArray = returnTagsArr().map((tag) =>
       tag.toLowerCase().replace(/\s/g, "").replace(/-/g, "")
     );
 
