@@ -30,6 +30,8 @@ export default function GraffitiForm({
     const formData = new FormData(event.target);
     const entryData = Object.fromEntries(formData);
 
+    console.log("entryData", entryData);
+
     async function uploadImages() {
       const completeImageArray = [];
       const firstThreeImages = imageSrc.slice(0, 3);
@@ -99,7 +101,6 @@ export default function GraffitiForm({
             required
             onChange={handleOnChange}
             type="file"
-            name="file"
             multiple
             className="file:h-12 file:border-black file:border file:rounded file:bg-ggreymid py-2"
           />
