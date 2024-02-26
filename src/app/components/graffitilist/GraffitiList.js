@@ -10,7 +10,14 @@ export default function GraffitiList() {
   if (error) return <div>failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
 
-  return data.entries.map((graffiti) => (
-    <GraffitiPreview key={graffiti._id} graffitidata={graffiti} />
-  ));
+  return (
+    <section className="flex flex-col gap-4">
+      {data.entries
+        .slice()
+        .reverse()
+        .map((graffiti) => (
+          <GraffitiPreview key={graffiti._id} graffitidata={graffiti} />
+        ))}
+    </section>
+  );
 }
