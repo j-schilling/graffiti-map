@@ -20,7 +20,7 @@ export default function NavBar() {
   const [active, setActive] = useState(0);
 
   return (
-    <div className="bg-white h-14 border-t fixed bottom-0 w-full">
+    <div className="bg-white h-14 border-t fixed bottom-0 w-full z-10">
       <ul className="flex justify-evenly">
         {Menus.map((menu, i) => (
           <li key={i} className="">
