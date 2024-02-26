@@ -84,15 +84,16 @@ export default function GraffitiForm({
   }
 
   return (
-    <div className="absolute left-4">
+    <div className="w-full">
+      {/* absolute left-4 */}
       <form
         aria-labelledby={formName}
         onSubmit={handleSubmit}
         className="p-4 flex flex-col gap-4 items-stretch"
       >
         <div className="flex flex-col flex-wrap">
-          <label htmlFor="file">
-            Add up to 3 images of the graffiti piece *
+          <label htmlFor="file" className="whitespace-normal">
+            Add up to 3 images of the graffiti *
           </label>
           <input
             required
@@ -100,7 +101,7 @@ export default function GraffitiForm({
             type="file"
             name="file"
             multiple
-            className="file:h-12 file:text-xs file:border-black file:border file:rounded file:bg-ggreymid py-2"
+            className="file:h-12 file:border-black file:border file:rounded file:bg-ggreymid py-2"
           />
           <div className="flex flex-row gap-2 flex-wrap">
             {imageSrc &&
@@ -118,7 +119,7 @@ export default function GraffitiForm({
         <div className="flex flex-col">
           <label htmlFor="coords">Longitude, Lattitude *</label>
           <p>{`(e.g. copy from Google Maps or Apple Maps)`}</p>
-          <p className="text-sm">
+          <p className="text-sm font-bold">
             Watch out: Must look exactly like this: 52.501928, 13.397778
           </p>
 
@@ -161,9 +162,9 @@ export default function GraffitiForm({
         >
           Add Graffiti
         </button>
-        <button
+        {/* <button
           className="bg-white w-48 h-16 rounded p-2.5 " // Update the color on click"
-        ></button>
+        ></button> */}
         {loadingAddGraffiti && (
           <div className="absolute bottom-0 h-full bg-gwhitedark opacity-50">
             <Image
