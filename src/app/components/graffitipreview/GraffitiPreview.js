@@ -3,20 +3,20 @@ import Link from "next/link";
 
 export default function GraffitiPreview({ graffitidata }) {
   return (
-    <section className="w-full h-full border-black border rounded shadow-lg white">
-      <Link href={`/${graffitidata._id}`}>
-        <div>
+    <Link href={`/${graffitidata._id}`}>
+      <section className="w-full h-full border-black border rounded shadow-lg white flex flex-col items-center">
+        <div className="relative w-full h-32">
           <Image
             src={graffitidata.images[0]}
-            width={200}
-            height={100}
+            fill={true}
             alt="image of a graffiti piece"
+            className="object-cover -z-10"
           />
         </div>
         <div className="text-left h-full flex flex-col gap-2 p-3">
           <p className=" 	">{graffitidata.location}</p>
         </div>
-      </Link>
-    </section>
+      </section>
+    </Link>
   );
 }
