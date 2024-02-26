@@ -21,12 +21,12 @@ export default async function RootLayout({ children }) {
   const session = await getServerSession();
   return (
     <html lang="en">
-      <body className={`${ibmplexsans.variable} font-sans`}>
-        <SessionProvider session={session}>
+      <SessionProvider session={session}>
+        <body className={`${ibmplexsans.variable} font-sans`}>
           <NavBar />
           {children}
-        </SessionProvider>
-      </body>
+        </body>
+      </SessionProvider>
     </html>
   );
 }
