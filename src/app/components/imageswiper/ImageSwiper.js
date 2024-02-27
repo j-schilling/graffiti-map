@@ -9,7 +9,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function ImageSwiper({ data }) {
-  console.log("adata", data);
   return (
     <section className="py-12">
       <div className="container">
