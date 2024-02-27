@@ -4,6 +4,7 @@ import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import PositionMarkerIcon from "/public/map/position-marker-icon.png";
+import MarkerIcon from "/public/map/marker-icon.png";
 import {
   MapContainer,
   TileLayer,
@@ -174,6 +175,7 @@ export default function Map() {
             alt="Icon to center the map to the current location"
           />
         </LocationButton> */}
+
         <GraffitiMarker />
         {isCurrentPosition && (
           <Marker
@@ -182,7 +184,7 @@ export default function Map() {
                 iconUrl: PositionMarkerIcon.src,
                 iconRetinaUrl: PositionMarkerIcon.src,
                 iconSize: [40, 40],
-                iconAnchor: [12.5, 15],
+                iconAnchor: [19.5, 20],
               })
             }
             position={coords}
