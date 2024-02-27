@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import GoBackIcon from "../../../public/icons/back_GraffitiMap.png";
 import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
-import GraffitiDetails from "./graffitiDetails";
+import GraffitiDetails from "./GraffitiDetails";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -33,6 +33,5 @@ export default function DetailPage({ params }) {
       <ImageSwiper data={data} />
       <GraffitiDetails graffitiData={data} />
     </main>
-    // </SessionProvider>
   );
 }
