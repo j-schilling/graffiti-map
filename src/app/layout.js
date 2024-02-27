@@ -2,6 +2,7 @@ import { IBM_Plex_Sans } from "next/font/google";
 
 import "./globals.css";
 import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 import SessionProvider from "./components/sessionprovider/SessionProvider";
 import NavBar from "./components/navbar/NavBar";
@@ -18,7 +19,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   return (
     <html lang="en">
       <SessionProvider session={session}>
