@@ -7,7 +7,7 @@ export default function GraffitiDetails({ graffitiData }) {
         <div className="text-gray-400">
           Added on {createdAt.toLocaleDateString()}
         </div>
-        <div className="text-lg line-clamp-4">
+        <div className="text-lg line-clamp-4 underline decoration-4 decoration-gyellow">
           {graffitiData.graffiti.location}
         </div>
       </section>
