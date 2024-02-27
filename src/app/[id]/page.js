@@ -21,13 +21,15 @@ export default function DetailPage({ params }) {
     // <SessionProvider session={session}>
     <main>
       <header className="flex justify-between items-center p-1">
-        <Link href="/map" onClick={() => router.back()}>
+        <Link href="" onClick={() => router.back()}>
           <div className="flex items-center">
             <Image src={GoBackIcon} width={50} height={50} alt="Go back icon" />
             Go back
           </div>
         </Link>
-        <GraffitiMapLogo width={144} height={53.4} />
+        <Link href="/">
+          <GraffitiMapLogo width={144} height={53.4} />
+        </Link>
       </header>
       <ImageSwiper data={data} />
       <section>
