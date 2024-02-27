@@ -11,13 +11,14 @@ import "swiper/css/pagination";
 export default function ImageSwiper({ data }) {
   return (
     <section>
-      <div className="container">
+      <div>
         <Swiper
           navigation
           pagination
           // ={{ type: "fraction" }}
           modules={[Navigation, Pagination]}
-          className="h-auto w-full rounded-s"
+          className="h-auto w-full rounded-s bg-black"
+          // flex justify-center items-center
         >
           {data.graffiti.images.map((image, index) => (
             <SwiperSlide key={index}>
@@ -28,7 +29,7 @@ export default function ImageSwiper({ data }) {
                   // fill={true}
                   width={504}
                   height={378}
-                  className="w-full h-auto"
+                  className="w-full h-auto "
                 ></Image>
               </div>
             </SwiperSlide>
