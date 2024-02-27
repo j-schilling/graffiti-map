@@ -7,7 +7,7 @@ export default function ProfileCard({ sessionData }) {
       <article className="p-3 w-full h-full flex flex-col gap-1 items-center bg-white">
         <div className="text-left h-full flex flex-col gap-2 p-3">
           {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
-          <h1 className="text-2xl font-mono">Your profile</h1>
+          <h1 className="text-2xl font-mono">My profile</h1>
           <Image
             src={sessionData.user.image}
             width={100}

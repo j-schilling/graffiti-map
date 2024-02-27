@@ -14,7 +14,7 @@ export default function GraffitiPreview({ graffitidata }) {
           />
         </div>
         <div className="text-left h-full flex flex-col gap-2 p-3">
-          <p className=" 	">{graffitidata.location}</p>
+          <p className="line-clamp-1">{graffitidata.location}</p>
         </div>
       </section>
     </Link>
