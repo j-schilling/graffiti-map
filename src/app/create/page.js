@@ -15,7 +15,11 @@ export default function CreateEntryPage() {
   if (session.status === "loading") {
     return null;
   }
-  if (session.status === "authenticated") {
+  if (session.status === "unauthenticated") {
+    return signIn();
+  }
+
+  {
     console.log("session on create", session);
     const creator = session.data?.user?.id;
     console.log("session.data", session.data);
@@ -62,5 +66,4 @@ export default function CreateEntryPage() {
       </main>
     );
   }
-  signIn();
 }

@@ -3,7 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import dbConnect from "@/db/connect";
 import User from "@/db/models/User";
 
-const handler = NextAuth({
+export const authOptions = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
@@ -14,9 +14,10 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
+      await dbConnect();
       const sessionUser = await User.findOne({ email: session.user.email });
-      console.log("sessionUser", { sessionUser });
-      session.user.id = sessionUser._id;
+      // console.log("sessionUser", { sessionUser });
+      session.user.id = sessionUser._id.toString();
       return session;
     },
     async signIn({ profile }) {
@@ -38,6 +39,7 @@ const handler = NextAuth({
       }
     },
   },
-});
+};
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
