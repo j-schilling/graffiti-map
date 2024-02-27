@@ -24,7 +24,7 @@ export default function DetailPage({ params }) {
       <header className="flex justify-between items-center p-1">
         <Link href="" onClick={() => router.back()}>
           <div className="flex items-center">
-            <Image src={GoBackIcon} width={50} height={50} alt="Go back icon" />
+            <Image src={GoBackIcon} width={40} height={40} alt="Go back icon" />
             Go back
           </div>
         </Link>
