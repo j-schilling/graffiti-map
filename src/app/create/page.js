@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, signOut, useSession } from "next-auth/react";
-
+import Link from "next/link.js";
 import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
 
@@ -48,7 +48,9 @@ export default function CreateEntryPage() {
 
     return (
       <main className=" w-full flex flex-col gap-4 p-4 items-center">
-        <GraffitiMapLogo width={160} height={66.75} />
+        <Link href="/">
+          <GraffitiMapLogo width={160} height={66.75} />
+        </Link>
         <h1 className="font-bold text-lg">{`Let's put a graffiti on the map`}</h1>
         <GraffitiForm
           setLoadingAddGraffiti={setLoadingAddGraffiti}
