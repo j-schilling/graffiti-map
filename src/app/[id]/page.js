@@ -8,6 +8,7 @@ import Link from "next/link";
 import GoBackIcon from "../../../public/icons/back_GraffitiMap.png";
 import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
 import GraffitiDetails from "./GraffitiDetails";
+import GraffitiTags from "./GraffitiTags";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -17,6 +18,7 @@ export default function DetailPage({ params }) {
   const { data, error, isLoading } = useSWR(`/api/graffitis/${id}`, fetcher);
   if (error) return <div>{`Failed to load :(`}</div>;
   if (isLoading) return <div>Loading Graffiti...</div>;
+
   return (
     <main>
       <header className="flex justify-between items-center p-1">
@@ -31,6 +33,7 @@ export default function DetailPage({ params }) {
         </Link>
       </header>
       <ImageSwiper data={data} />
+      <GraffitiTags tags={data.graffiti.tags} />
       <GraffitiDetails graffitiData={data} />
     </main>
   );
