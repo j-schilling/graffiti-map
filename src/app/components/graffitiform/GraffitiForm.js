@@ -1,5 +1,13 @@
-import { useState } from "react";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+
+const DynamicMap = dynamic(
+  () => import("@/app/components/graffitiform/DraggableMarkerMap"),
+  {
+    ssr: false,
+  }
+);
 
 export default function GraffitiForm({
   onSubmit,
@@ -9,7 +17,52 @@ export default function GraffitiForm({
   loadingAddGraffiti,
   setLoadingAddGraffiti,
 }) {
+  const [userCoords, setUserCoords] = useState(null);
+  const [draggableMarkerCoords, setDraggableMarkerCoords] =
+    useState(userCoords);
+  const [zoom, setZoom] = useState(2);
   const [imageSrc, setImageSrc] = useState([]);
+  console.log({ draggableMarkerCoords });
+
+  useEffect(() => {
+    function geoFindme() {
+      function success(position) {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        // Update the state with the new lat long
+        setUserCoords([lat, long]);
+        setDraggableMarkerCoords([lat, long]);
+      }
+      function error() {
+        setUserCoords([50.94252260860335, 6.959073771647771]);
+        setDraggableMarkerCoords([50.94252260860335, 6.959073771647771]);
+        setZoom(2);
+        console.log("Unable to retrieve your location");
+      }
+
+      if (!navigator.geolocation) {
+        setUserCoords([50.94252260860335, 6.959073771647771]);
+        setZoom(2);
+        console.log("Geolocation is not supported by your browser");
+      } else {
+        setZoom(19);
+        console.log("Locating…");
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+    }
+
+    // Call geoFindme to update coords state
+    geoFindme();
+  }, []);
+
+  //set value of location field after dragging marker
+  // useEffect(() => {
+  //   document.getElementById("coords").value = draggableMarkerCoords;
+  // }, [draggableMarkerCoords]);
+
+  if (!userCoords) {
+    return "Loading graffiti upload form...";
+  }
 
   function handleOnChange(e) {
     for (const file of e.target.files) {
@@ -117,21 +170,32 @@ export default function GraffitiForm({
               ))}
           </div>
         </div>
+        <p className="bottom-0">Drag the pin to the graffiti location:</p>
+        <div className="max-h-full w-full aspect-square overflow-hidden">
+          <DynamicMap
+            userCoords={userCoords}
+            setUserCoords={setUserCoords}
+            draggableMarkerCoords={draggableMarkerCoords}
+            setDraggableMarkerCoords={setDraggableMarkerCoords}
+            zoom={zoom}
+          />
+        </div>
         <div className="flex flex-col">
-          <label htmlFor="coords">Longitude, Lattitude *</label>
+          {/* <label htmlFor="coords">Longitude, Lattitude *</label>
           <p>{`(e.g. copy from Google Maps or Apple Maps)`}</p>
           <p className="text-sm font-bold">
             Watch out: Must look exactly like this: 52.501928, 13.397778
-          </p>
+          </p> */}
 
           <input
             required
             id="coords"
             name="coords"
-            type="text"
+            type="hidden"
             // defaultValue={defaultData?.mapURL}
             placeholder="52.501928, 13.397778"
             className="w-full border border-black rounded p-3 invalid:border-red-500"
+            value={draggableMarkerCoords}
           />
         </div>
         <div className="flex flex-col">
