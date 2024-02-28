@@ -6,24 +6,26 @@ import mapImage from "../../../../public/teaser/mapteaser.png";
 
 export default function CreateTeaser() {
   return (
-    <div className="w-full h-full border-black border rounded shadow-lg white">
+    <div className="w-full h-full border-black border bg-gyellow">
       <Link href="/create">
-        <article className="p-3 w-full h-full flex flex-row gap-1 items-center bg-white">
+        <article className="p-3 w-full h-full flex flex-row gap-1 items-start">
+          <div className="text-left h-full flex flex-col gap-2 p-3">
+            {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
+            <h1 className="text-2xl">CREATE ONE</h1>
+            <p>
+              Take a picture of a graffiti and add it on the map for the world
+              to see.
+              <br />
+              <span className="font-bold">{`Let's go`}</span>
+            </p>
+          </div>
           <Image
             src={createIcon}
             width={50}
             height={50}
             alt="create a graffiti icon"
           />
-          <div className="text-left h-full flex flex-col gap-2 p-3">
-            {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
-            <h1 className="text-2xl font-mono">Create one</h1>
-            <p>
-              Take a picture of a graffiti and add it on the map for the world
-              to see.
-            </p>
-            <strong className="underline decoration-4 decoration-gyellow	">{`Let's go`}</strong>
-          </div>
+          {/* <strong className="decoration-4 decoration-gyellow	">{`Let's go`}</strong> */}
         </article>
       </Link>
     </div>
@@ -32,7 +34,7 @@ export default function CreateTeaser() {
 
 export function MapTeaser() {
   return (
-    <div className="w-full h-full border-black border rounded shadow-lg white">
+    <div className="w-full h-full border-black border bg-white">
       <Link href="/map">
         <Image
           src={mapImage}
