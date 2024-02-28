@@ -2,9 +2,11 @@
 
 import "leaflet/dist/leaflet.css";
 
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import styles from "@/app/components/map/Map.module.css";
 import DraggableMarker from "@/app/components/graffitiform/DraggableMarker";
+import DraggableMarkerIcon from "../../../../public/map/g-marker-icon-y.png";
+import MarkerShadow from "/public/map/marker-shadow.png";
 
 export default function DraggableMarkerMap({
   userCoords,
