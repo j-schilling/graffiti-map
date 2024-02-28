@@ -12,16 +12,20 @@ let center = {
   lng: -0.09,
 };
 
-export default function DraggableMarker() {
-  const [position, setPosition] = useState(center);
-  console.log("position", position);
+export default function DraggableMarker({
+  userCoords,
+  setUserCoords,
+  setDraggableMarkerCoords,
+}) {
+  //   const [position, setPosition] = useState(userCoords);
+  //   console.log("position", position);
   const markerRef = useRef(null);
   const eventHandlers = useMemo(
     () => ({
       dragend() {
         const marker = markerRef.current;
         if (marker != null) {
-          setPosition(marker.getLatLng());
+          setDraggableMarkerCoords(marker.getLatLng());
         }
       },
     }),
@@ -32,7 +36,7 @@ export default function DraggableMarker() {
     <Marker
       draggable={true}
       eventHandlers={eventHandlers}
-      position={position}
+      position={userCoords}
       ref={markerRef}
       icon={
         new L.Icon({

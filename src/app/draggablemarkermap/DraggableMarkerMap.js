@@ -12,15 +12,20 @@ import {
 import { useEffect, useState } from "react";
 import DraggableMarker from "@/app/draggablemarkermap/DraggableMarker";
 
-export default function DraggableMarkerMap() {
+export default function DraggableMarkerMap({
+  userCoords,
+  setUserCoords,
+  setDraggableMarkerCoords,
+  zoom,
+}) {
   return (
     <MapContainer
       style={{
         height: "100vh",
         width: "100vw",
       }}
-      center={[52, 13]}
-      zoom={19}
+      center={userCoords}
+      zoom={zoom}
       scrollWheelZoom={false}
     >
       <TileLayer
@@ -29,7 +34,11 @@ export default function DraggableMarkerMap() {
         maxZoom={19}
       />
 
-      <DraggableMarker />
+      <DraggableMarker
+        userCoords={userCoords}
+        setUserCoords={setUserCoords}
+        setDraggableMarkerCoords={setDraggableMarkerCoords}
+      />
     </MapContainer>
   );
 }
