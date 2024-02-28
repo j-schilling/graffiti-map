@@ -9,16 +9,6 @@ const DynamicMap = dynamic(
   }
 );
 
-// function DynamicMapCaller({ userCoords, setUserCoords, zoom }) {
-//   return (
-//     <DynamicMap
-//       userCoords={userCoords}
-//       setUserCoords={setUserCoords()}
-//       zoom={zoom}
-//     />
-//   );
-// }
-
 export default function GraffitiForm({
   onSubmit,
   formName,
@@ -45,6 +35,7 @@ export default function GraffitiForm({
       }
       function error() {
         setUserCoords([50.94252260860335, 6.959073771647771]);
+        setDraggableMarkerCoords([50.94252260860335, 6.959073771647771]);
         setZoom(2);
         console.log("Unable to retrieve your location");
       }
@@ -65,9 +56,9 @@ export default function GraffitiForm({
   }, []);
 
   //set value of location field after dragging marker
-  useEffect(() => {
-    document.getElementById("coords").value = draggableMarkerCoords;
-  }, [draggableMarkerCoords]);
+  // useEffect(() => {
+  //   document.getElementById("coords").value = draggableMarkerCoords;
+  // }, [draggableMarkerCoords]);
 
   if (!userCoords) {
     return "Loading graffiti upload form...";
@@ -147,6 +138,16 @@ export default function GraffitiForm({
     onSubmit(finalObject);
   }
 
+  const handleCoordsChange = (event) => {
+    setDraggableMarkerCoords(event.target.value);
+  };
+
+  // const draggableMarkerCoordsArray = [
+  //   draggableMarkerCoords.lat,
+  //   draggableMarkerCoords.lng,
+  // ];
+  // console.log("draggableMarkerCoordsArray", draggableMarkerCoordsArray);
+
   return (
     <div className="w-full">
       {/* absolute left-4 */}
@@ -183,25 +184,28 @@ export default function GraffitiForm({
           <DynamicMap
             userCoords={userCoords}
             setUserCoords={setUserCoords}
+            draggableMarkerCoords={draggableMarkerCoords}
             setDraggableMarkerCoords={setDraggableMarkerCoords}
             zoom={zoom}
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="coords">Longitude, Lattitude *</label>
+          {/* <label htmlFor="coords">Longitude, Lattitude *</label>
           <p>{`(e.g. copy from Google Maps or Apple Maps)`}</p>
           <p className="text-sm font-bold">
             Watch out: Must look exactly like this: 52.501928, 13.397778
-          </p>
+          </p> */}
 
           <input
             required
             id="coords"
             name="coords"
-            type="text"
+            type="hidden"
             // defaultValue={defaultData?.mapURL}
             placeholder="52.501928, 13.397778"
             className="w-full border border-black rounded p-3 invalid:border-red-500"
+            onChange={handleCoordsChange}
+            value={draggableMarkerCoords}
           />
         </div>
         <div className="flex flex-col">

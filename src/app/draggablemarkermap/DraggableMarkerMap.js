@@ -15,6 +15,7 @@ import DraggableMarker from "@/app/draggablemarkermap/DraggableMarker";
 export default function DraggableMarkerMap({
   userCoords,
   setUserCoords,
+  draggableMarkerCoords,
   setDraggableMarkerCoords,
   zoom,
 }) {
@@ -37,6 +38,7 @@ export default function DraggableMarkerMap({
       <DraggableMarker
         userCoords={userCoords}
         setUserCoords={setUserCoords}
+        draggableMarkerCoords={draggableMarkerCoords}
         setDraggableMarkerCoords={setDraggableMarkerCoords}
       />
     </MapContainer>
