@@ -42,7 +42,7 @@ export default function Map() {
         setZoom(2);
         console.log("Geolocation is not supported by your browser");
       } else {
-        setZoom(13);
+        setZoom(14);
         console.log("Locating…");
         navigator.geolocation.getCurrentPosition(success, error);
       }

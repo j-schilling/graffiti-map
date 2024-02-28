@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css";
 
 import { MapContainer, TileLayer } from "react-leaflet";
 import styles from "@/app/components/map/Map.module.css";
-import DraggableMarker from "@/app/draggablemarkermap/DraggableMarker";
+import DraggableMarker from "@/app/components/graffitiform/DraggableMarker";
 
 export default function DraggableMarkerMap({
   userCoords,
@@ -14,8 +14,11 @@ export default function DraggableMarkerMap({
   return (
     <MapContainer
       style={{
+        maxHeight: "100%",
         height: "100vh",
         width: "100vw",
+        aspectRatio: "1 / 1",
+        top: "0px",
       }}
       center={userCoords}
       zoom={zoom}

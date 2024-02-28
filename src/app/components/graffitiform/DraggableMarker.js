@@ -45,9 +45,9 @@ export default function DraggableMarker({
         })
       }
     >
-      <Popup minWidth={90}>
+      {/* <Popup minWidth={90}>
         <span>Drag the marker to the graffiti location</span>
-      </Popup>
+      </Popup> */}
     </Marker>
   );
 }

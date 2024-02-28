@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const DynamicMap = dynamic(
-  () => import("@/app/draggablemarkermap/DraggableMarkerMap"),
+  () => import("@/app/components/graffitiform/DraggableMarkerMap"),
   {
     ssr: false,
   }
@@ -170,7 +170,8 @@ export default function GraffitiForm({
               ))}
           </div>
         </div>
-        <div className="h-auto w-full overflow-hidden">
+        <p className="bottom-0">Drag the pin to the graffiti location:</p>
+        <div className="max-h-full w-full aspect-square overflow-hidden">
           <DynamicMap
             userCoords={userCoords}
             setUserCoords={setUserCoords}
