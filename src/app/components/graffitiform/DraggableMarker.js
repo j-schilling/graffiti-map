@@ -2,7 +2,7 @@
 
 import { useState, useRef, useMemo } from "react";
 import L from "leaflet";
-import MarkerIcon from "/public/map/g-marker-icon-bl.png";
+import MarkerIcon from "/public/map/g-marker-icon-y.png";
 import MarkerShadow from "/public/map/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
@@ -37,11 +37,11 @@ export default function DraggableMarker({
         new L.Icon({
           iconUrl: MarkerIcon.src,
           iconRetinaUrl: MarkerIcon.src,
-          iconSize: [25, 41],
-          iconAnchor: [12.5, 41],
+          iconSize: [50, 82],
+          iconAnchor: [25, 82],
           popupAnchor: [0, -41],
           shadowUrl: MarkerShadow.src,
-          shadowSize: [41, 41],
+          shadowSize: [82, 82],
         })
       }
     >
