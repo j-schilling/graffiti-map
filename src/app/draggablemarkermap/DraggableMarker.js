@@ -7,7 +7,7 @@ import MarkerShadow from "/public/map/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
 
-const center = {
+let center = {
   lat: 51.505,
   lng: -0.09,
 };

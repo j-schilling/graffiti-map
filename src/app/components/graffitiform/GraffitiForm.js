@@ -1,4 +1,12 @@
+import dynamic from "next/dynamic";
 import { useState } from "react";
+
+const DynamicMap = dynamic(
+  () => import("@/app/draggablemarkermap/DraggableMarkerMap"),
+  {
+    ssr: false,
+  }
+);
 import Image from "next/image";
 
 export default function GraffitiForm({
@@ -116,6 +124,9 @@ export default function GraffitiForm({
                 />
               ))}
           </div>
+        </div>
+        <div className="h-auto w-full overflow-hidden">
+          <DynamicMap />
         </div>
         <div className="flex flex-col">
           <label htmlFor="coords">Longitude, Lattitude *</label>
