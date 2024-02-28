@@ -7,19 +7,10 @@ import MarkerShadow from "/public/map/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { Marker, Popup } from "react-leaflet";
 
-let center = {
-  lat: 51.505,
-  lng: -0.09,
-};
-
 export default function DraggableMarker({
   userCoords,
-  setUserCoords,
-  draggableMarkerCoords,
   setDraggableMarkerCoords,
 }) {
-  //   const [position, setPosition] = useState(userCoords);
-  //   console.log("position", position);
   const markerRef = useRef(null);
   const eventHandlers = useMemo(
     () => ({
@@ -40,7 +31,7 @@ export default function DraggableMarker({
     <Marker
       draggable={true}
       eventHandlers={eventHandlers}
-      position={draggableMarkerCoords}
+      position={userCoords}
       ref={markerRef}
       icon={
         new L.Icon({

@@ -138,16 +138,6 @@ export default function GraffitiForm({
     onSubmit(finalObject);
   }
 
-  const handleCoordsChange = (event) => {
-    setDraggableMarkerCoords(event.target.value);
-  };
-
-  // const draggableMarkerCoordsArray = [
-  //   draggableMarkerCoords.lat,
-  //   draggableMarkerCoords.lng,
-  // ];
-  // console.log("draggableMarkerCoordsArray", draggableMarkerCoordsArray);
-
   return (
     <div className="w-full">
       {/* absolute left-4 */}
@@ -204,7 +194,6 @@ export default function GraffitiForm({
             // defaultValue={defaultData?.mapURL}
             placeholder="52.501928, 13.397778"
             className="w-full border border-black rounded p-3 invalid:border-red-500"
-            onChange={handleCoordsChange}
             value={draggableMarkerCoords}
           />
         </div>

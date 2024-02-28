@@ -2,20 +2,12 @@
 
 import "leaflet/dist/leaflet.css";
 
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  useMap,
-  useMapEvents,
-} from "react-leaflet";
-import { useEffect, useState } from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
+import styles from "@/app/components/map/Map.module.css";
 import DraggableMarker from "@/app/draggablemarkermap/DraggableMarker";
 
 export default function DraggableMarkerMap({
   userCoords,
-  setUserCoords,
-  draggableMarkerCoords,
   setDraggableMarkerCoords,
   zoom,
 }) {
@@ -30,6 +22,7 @@ export default function DraggableMarkerMap({
       scrollWheelZoom={false}
     >
       <TileLayer
+        className={styles.mapgray}
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         maxZoom={19}
@@ -37,8 +30,6 @@ export default function DraggableMarkerMap({
 
       <DraggableMarker
         userCoords={userCoords}
-        setUserCoords={setUserCoords}
-        draggableMarkerCoords={draggableMarkerCoords}
         setDraggableMarkerCoords={setDraggableMarkerCoords}
       />
     </MapContainer>
