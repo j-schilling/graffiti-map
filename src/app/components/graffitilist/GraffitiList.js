@@ -12,7 +12,7 @@ export default function GraffitiList() {
 
   return (
     <section className="flex flex-col gap-4 w-full">
-      <h1 className="font-bold text-xl text-center">Recently added:</h1>
+      <h1 className="text-xl">RECENTLY ADDED</h1>
       {data.entries
         .slice()
         .reverse()

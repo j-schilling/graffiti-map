@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function GraffitiPreview({ graffitidata }) {
   return (
     <Link href={`/${graffitidata._id}`}>
-      <section className="w-full h-full border-black border rounded shadow-lg white flex flex-col items-center">
+      <section className="w-full h-full border-black border white flex flex-col items-center">
         <div className="relative w-full h-40">
           <Image
             src={graffitidata.images[0]}
