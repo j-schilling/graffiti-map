@@ -55,7 +55,7 @@ export default function CreateEntryPage() {
         <Link href="/">
           <GraffitiMapLogo width={160} height={66.75} />
         </Link>
-        <h1 className="font-bold text-lg">{`Let's put a graffiti on the map`}</h1>
+        <h1 className="text-xl">{`LET'S PUT A GRAFFITI ON THE MAP`}</h1>
         <GraffitiForm
           setLoadingAddGraffiti={setLoadingAddGraffiti}
           loadingAddGraffiti={loadingAddGraffiti}
