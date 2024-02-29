@@ -7,9 +7,6 @@ import GraffitiList from "./components/graffitilist/GraffitiList";
 export default function Home() {
   return (
     <main className="flex flex-col gap-8 p-5 items-center max-w-xl m-auto text-xs">
-      <header className="flex justify-end g-4 items-center">
-        <SignInButton />
-      </header>
       <GraffitiMapLogo width={320} height={133.5} className="mt-0" />
       <section>
         <p className="px-4">

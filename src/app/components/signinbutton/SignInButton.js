@@ -3,12 +3,13 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function SignInButton() {
-  const { data: session } = useSession();
+  const session = useSession();
+  console.log("session", session);
 
   if (session) {
     return (
-      <div className="flex justify-end gap-2 items-center">
-        {session?.user?.name} <br />
+      <div className="flex flex-col justify-end gap-2 items-center">
+        {session.data?.user?.name} <br />
         <button
           className=" border-black p-1 border rounded  bg-ggreymid "
           onClick={() => {

@@ -1,8 +1,7 @@
 "use client";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import SignInButton from "../components/signinbutton/SignInButton";
 import ProfileCard from "./ProfileCard";
 import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
 import GraffitiListPersonal from "../components/graffitilist/GraffitiListPersonal";
