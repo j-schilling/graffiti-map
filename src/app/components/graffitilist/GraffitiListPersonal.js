@@ -17,7 +17,7 @@ export default function GraffitiListPersonal({ creator }) {
 
   return (
     <section className="flex flex-col gap-4 w-full">
-      <h1 className="font-bold text-xl text-center">Added by me:</h1>
+      <h1 className="text-xl">ADDED BY ME</h1>
       {graffitisAddedByYou.reverse().map((graffiti) => (
         <GraffitiPreview key={graffiti._id} graffitidata={graffiti} />
       ))}
