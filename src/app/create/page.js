@@ -20,11 +20,7 @@ export default function CreateEntryPage() {
   }
 
   {
-    console.log("session on create", session);
     const creator = session.data?.user?.id;
-    console.log("session.data", session.data);
-    console.log("session.data.user", session.data.user);
-    console.log("creator", creator);
 
     async function AddGraffiti(entryData) {
       setLoadingAddGraffiti(true);
@@ -36,9 +32,7 @@ export default function CreateEntryPage() {
         body: JSON.stringify(entryData),
       });
       if (!response.ok) {
-        alert(
-          "Ooops, something went wrong. Your graffiti was not added :( Please check, if longitude and latitude are entered in the required format. Thanks!"
-        );
+        alert("Ooops, something went wrong. Your graffiti was not added :(");
         console.log(error);
       }
       if (response.ok) {
