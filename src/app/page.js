@@ -19,7 +19,6 @@ export default function Home() {
       </section>
       <MapTeaser />
       <CreateTeaser />
-      <SignInButton />
       <GraffitiList />
     </main>
   );
