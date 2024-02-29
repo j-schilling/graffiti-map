@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link.js";
 import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";

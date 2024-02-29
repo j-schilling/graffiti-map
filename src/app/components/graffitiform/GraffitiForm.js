@@ -55,11 +55,6 @@ export default function GraffitiForm({
     geoFindme();
   }, []);
 
-  //set value of location field after dragging marker
-  // useEffect(() => {
-  //   document.getElementById("coords").value = draggableMarkerCoords;
-  // }, [draggableMarkerCoords]);
-
   if (!userCoords) {
     return "Loading graffiti upload form...";
   }
@@ -139,7 +134,7 @@ export default function GraffitiForm({
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       {/* absolute left-4 */}
       <form
         aria-labelledby={formName}
