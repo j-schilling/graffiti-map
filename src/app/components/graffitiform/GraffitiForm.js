@@ -166,7 +166,7 @@ export default function GraffitiForm({
           </div>
         </div>
         <p className="bottom-0">Drag the pin to the graffiti location:</p>
-        <div className="max-h-full w-full aspect-square overflow-hidden">
+        <div className="max-h-full w-full aspect-square overflow-hidden z-0">
           <DynamicMap
             userCoords={userCoords}
             setUserCoords={setUserCoords}
@@ -226,17 +226,15 @@ export default function GraffitiForm({
           className="bg-white w-48 h-16 rounded p-2.5 " // Update the color on click"
         ></button> */}
         {loadingAddGraffiti && (
-          <div className="absolute bottom-0 h-full bg-gwhitedark opacity-50">
+          <div className="fixed bottom-0 left-0 p-0 m-0 h-full w-full bg-gyellow flex flex-col justify-center">
+            <h1 className="p-4 text-2xl text-black ">UPLOADING...</h1>
             <Image
-              className={"p-4 opacity-0 relative"}
+              className="p-4"
               src="https://i.giphy.com/d1TwYpDcR1zPi.webp"
               width={462}
               height={350}
               alt="animated GIF of a spray can"
             />
-            <h1 className="relative -top-24 text-center font-bold text-2xl text-gyellow ">
-              Uploading...
-            </h1>
           </div>
         )}
       </form>
