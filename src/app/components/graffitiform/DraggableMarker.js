@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useRef, useMemo } from "react";
+import { useRef, useMemo } from "react";
 import L from "leaflet";
 import MarkerIcon from "/public/map/g-marker-icon-y.png";
 import MarkerShadow from "/public/map/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
-import { Marker, Popup } from "react-leaflet";
+import { Marker } from "react-leaflet";
 
 export default function DraggableMarker({
   userCoords,

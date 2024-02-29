@@ -2,6 +2,7 @@
 
 import useSWR from "swr";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import ImageSwiper from "../components/imageswiper/ImageSwiper";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,7 @@ import GraffitiTags from "./GraffitiTags";
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function DetailPage({ params }) {
+  const session = useSession();
   const router = useRouter();
   const { id } = params;
   const { data, error, isLoading } = useSWR(`/api/graffitis/${id}`, fetcher);

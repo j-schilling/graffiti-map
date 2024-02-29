@@ -19,7 +19,7 @@ export default function Personal() {
     console.log("creator on personal", creator);
 
     return (
-      <main className="flex flex-col gap-8 p-5 items-center">
+      <main className="flex flex-col gap-8 p-5 items-center max-w-xl m-auto">
         <Link href="/">
           <GraffitiMapLogo width={160} height={66.75} />
         </Link>
