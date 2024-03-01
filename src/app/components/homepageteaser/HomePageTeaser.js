@@ -11,10 +11,10 @@ export default function CreateTeaser() {
         <article className="p-3 w-full h-full flex flex-row gap-1 items-start">
           <div className="text-left h-full flex flex-col gap-2 p-3">
             {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
-            <h1 className="text-2xl">CREATE ONE</h1>
+            <h1 className="text-2xl">ADD ONE</h1>
             <p>
-              Take a picture of a graffiti and add it on the map for the world
-              to see.
+              Uploading just got easy like a walk in the park - take a picture
+              of a graffiti and add it on the map for the world to see.
               <br />
               <span className="font-bold">{`Let's go`}</span>
             </p>

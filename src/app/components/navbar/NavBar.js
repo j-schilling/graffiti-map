@@ -13,7 +13,7 @@ export default function NavBar() {
   const Menus = [
     { name: "Home", href: "/", src: homeIcon },
     { name: "Map", href: "/map", src: mapIcon },
-    { name: "Create", href: "/create", src: createIcon },
+    { name: "Add", href: "/create", src: createIcon },
     { name: "Personal", href: "/personal", src: personalIcon },
   ];
 
