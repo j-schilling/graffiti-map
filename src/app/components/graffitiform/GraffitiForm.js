@@ -150,7 +150,7 @@ export default function GraffitiForm({
             onChange={handleOnChange}
             type="file"
             multiple
-            className="file:h-12 file:border-black file:border file:rounded file:bg-ggreymid py-2"
+            className="file:h-12 file:border-black file:border  file:bg-ggreymid py-2"
           />
           <div className="flex flex-row gap-2 flex-wrap">
             {imageSrc &&
@@ -218,7 +218,7 @@ export default function GraffitiForm({
         </div>
         <button
           type="submit"
-          className="bg-gyellow w-48 h-16 border-black border rounded p-2.5 " // Update the color on click"
+          className="bg-gyellow w-48 h-16 border-black border  p-2.5 " // Update the color on click"
         >
           Add Graffiti
         </button>
