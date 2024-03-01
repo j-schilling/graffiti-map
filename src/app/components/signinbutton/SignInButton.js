@@ -11,7 +11,7 @@ export default function SignInButton() {
       <div className="flex flex-col justify-end gap-2 items-center">
         {session.data?.user?.name} <br />
         <button
-          className=" border-black p-1 border rounded  bg-ggreymid "
+          className=" border-black p-2 border   bg-ggreymid "
           onClick={() => {
             signOut();
           }}
