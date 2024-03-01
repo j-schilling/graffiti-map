@@ -6,7 +6,7 @@ export default function SignInButton() {
   const session = useSession();
   console.log("session", session);
 
-  if (session) {
+  if (session.data) {
     return (
       <div className="flex flex-col justify-end gap-2 items-center">
         {session.data?.user?.name} <br />
@@ -24,7 +24,7 @@ export default function SignInButton() {
   return (
     <>
       <button
-        onClick={() => signIn("Google")}
+        onClick={() => signIn("google")}
         className=" border-black p-1 border rounded wq bg-ggreymid "
       >
         Sign in

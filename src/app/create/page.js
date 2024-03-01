@@ -6,6 +6,7 @@ import { signIn, useSession } from "next-auth/react";
 import Link from "next/link.js";
 import GraffitiForm from "../components/graffitiform/GraffitiForm.js";
 import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
+import SignInButton from "../components/signinbutton/SignInButton.js";
 
 export default function CreateEntryPage() {
   const session = useSession();
@@ -16,7 +17,7 @@ export default function CreateEntryPage() {
     return null;
   }
   if (session.status === "unauthenticated") {
-    return signIn();
+    return <SignInButton />;
   }
 
   {
