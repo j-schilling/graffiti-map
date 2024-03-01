@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SignInButton from "../components/signinbutton/SignInButton";
+import Link from "next/link";
 
 export default function ProfileCard({ sessionData }) {
   return (
@@ -18,6 +19,9 @@ export default function ProfileCard({ sessionData }) {
           </div>
           <SignInButton />
         </div>
+        <Link href="/comingsoon">
+          <button>Coming soon</button>
+        </Link>
       </article>
     </div>
   );
