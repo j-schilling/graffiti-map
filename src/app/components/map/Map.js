@@ -151,7 +151,7 @@ export default function Map() {
         }}
         center={coords}
         zoom={zoom}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
       >
         <TileLayer
           className={styles.mapgray}

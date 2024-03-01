@@ -22,7 +22,7 @@ export default function DraggableMarkerMap({
       }}
       center={userCoords}
       zoom={zoom}
-      scrollWheelZoom={false}
+      scrollWheelZoom={true}
     >
       <TileLayer
         className={styles.mapgray}
