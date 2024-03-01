@@ -13,6 +13,11 @@ export default function Personal() {
   if (session.status === "loading") {
     return null;
   }
+
+  if (session.status === "unauthenticated") {
+    return signIn();
+  }
+
   if (session.status === "authenticated") {
     const creator = session.data?.user?.id;
     console.log("creator on personal", creator);
@@ -27,5 +32,4 @@ export default function Personal() {
       </main>
     );
   }
-  signIn();
 }
