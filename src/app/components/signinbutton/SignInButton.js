@@ -25,15 +25,10 @@ export default function SignInButton() {
     <>
       <button
         onClick={() => signIn("google")}
-        className=" border-black p-1 border rounded wq bg-ggreymid "
+        className="bg-gyellow w-48 h-16 border-black border  p-2.5 "
       >
         Sign in
       </button>
-      {/* <button
-     class="h-12 border-black border-2 p-2.5 bg-[#A6FAFF] hover:bg-[#79F7FF] hover:shadow-[2px_2px_0px_rgba(0,0,0,1)] active:bg-[#00E1EF]"
-     >
-  Simple Button
-  </button> */}
     </>
   );
 }

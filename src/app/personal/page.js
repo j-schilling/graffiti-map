@@ -5,7 +5,7 @@ import Link from "next/link";
 import ProfileCard from "./ProfileCard";
 import GraffitiMapLogo from "../components/graffitimaplogo/GraffitiMapLogo";
 import GraffitiListPersonal from "../components/graffitilist/GraffitiListPersonal";
-import SignInButton from "../components/signinbutton/SignInButton";
+import SignInComponent from "../components/signincomponent/SignInComponent";
 
 export default function Personal() {
   const session = useSession();
@@ -16,7 +16,7 @@ export default function Personal() {
   }
 
   if (session.status === "unauthenticated") {
-    return <SignInButton />;
+    return <SignInComponent pagetext={"see your personal page"} />;
   }
 
   if (session.status === "authenticated") {
