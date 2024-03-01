@@ -4,14 +4,7 @@ import styles from "./Map.module.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import PositionMarkerIcon from "/public/map/position-marker-icon.png";
-import MarkerIcon from "/public/map/marker-icon.png";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  useMap,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import { useEffect, useState } from "react";
 import GraffitiMarker from "../graffitimarker/GraffitiMarker";
 
@@ -153,6 +146,8 @@ export default function Map() {
         style={{
           height: "100vh",
           width: "100vw",
+          top: "0px",
+          maxHeight: "100%",
         }}
         center={coords}
         zoom={zoom}
