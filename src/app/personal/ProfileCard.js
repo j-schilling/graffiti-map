@@ -19,9 +19,6 @@ export default function ProfileCard({ sessionData }) {
           </div>
           <SignInButton />
         </div>
-        <Link href="/comingsoon">
-          <button>Coming soon</button>
-        </Link>
       </article>
     </div>
   );

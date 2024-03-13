@@ -143,7 +143,8 @@ export default function GraffitiForm({
       >
         <div className="flex flex-col flex-wrap">
           <label htmlFor="file" className="whitespace-normal">
-            Add up to 3 images of the graffiti *
+            Add up to 3 images of the graffiti. <br />
+            Use a close up as first image for best results.
           </label>
           <input
             required
@@ -194,7 +195,7 @@ export default function GraffitiForm({
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="location">Location *</label>
+          <label htmlFor="location">Location</label>
           <input
             required
             id="location"

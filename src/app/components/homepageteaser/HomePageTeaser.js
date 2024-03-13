@@ -13,8 +13,8 @@ export default function CreateTeaser() {
             {/* <p className="text-base mb-4">Welcome to Graffiti Map</p> */}
             <h1 className="text-2xl">ADD ONE</h1>
             <p>
-              Uploading just got easy like a walk in the park - take a picture
-              of a graffiti and add it on the map for the world to see.
+              Uploading just got easy like a walk in the park. Take a picture of
+              a graffiti and add it on the map for the world to see.
               <br />
               <span className="font-bold">{`Let's go`}</span>
             </p>
