@@ -9,7 +9,7 @@ export default function SignInComponent({ pagetext }) {
         <GraffitiMapLogo width={320} height={133.5} />
       </Link>
       <div className="p-5 w-full h-full flex flex-col gap-4 items-center border-black ">
-        <p>Please sign in to {pagetext}.</p>
+        <p>Please sign in with Google to {pagetext}.</p>
         <SignInButton />
       </div>
     </main>
